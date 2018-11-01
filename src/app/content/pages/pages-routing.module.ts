@@ -10,14 +10,13 @@ const routes: Routes = [
 	{
 		path: '',
 		component: PagesComponent,
-		canActivate: [NgxPermissionsGuard],
-		data: {
-			permissions: {
-				only: ['ADMIN', 'USER'],
-				except: ['GUEST'],
-				redirectTo: '/login'
-			}
-		},
+		// canActivate: [NgxPermissionsGuard],
+		// data: {
+		// 	permissions: {
+		// 		only: ['Admin'],
+		// 		redirectTo: '/login'
+		// 	}
+		// },
 		children: [
 			{
 				path: '',
