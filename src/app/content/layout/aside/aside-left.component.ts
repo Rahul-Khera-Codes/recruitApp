@@ -54,12 +54,16 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 			icon: 'flaticon-interface-7',
 			submenu: [
 				{
-					title: 'IMAP Server Setting',
-					bullet: 'dot'
-				},
-				{
-					title: 'SMTP Server Setting',
-					bullet: 'dot'
+					title: 'Server Setting',
+					bullet: 'dot',
+					submenu: [
+						{
+							title: 'IMAP'
+						},
+						{
+							title: 'SMTP'
+						}
+					]
 				},
 				{
 					title: 'Slack Info',
