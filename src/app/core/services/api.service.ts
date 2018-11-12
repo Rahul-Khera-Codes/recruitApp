@@ -551,19 +551,9 @@ export class ApiService {
     // getEmailName(): Promise<any[]> {
     //     return Promise.resolve(Emaillist);
     // }
-    // deleteImap(id: string): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.Intercepted.delete(environment['apibase'] + 'imap/delete/' + id)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res.json();
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error.json() || 'Server error');
-    //         });
-    // }
+    async deleteImap(id: string) {
+        return await this.http.delete(this.updateUrl(`${this.API_URL}/imap/delete/${id}`)).toPromise();
+    }
     // storeImap(body): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.Intercepted.post(environment['apibase'] + 'imap/save', body)
@@ -577,19 +567,9 @@ export class ApiService {
     //             return Observable.throw(error.json() || 'Server error');
     //         });
     // }
-    // getImapList(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.Intercepted.get(environment['apibase'] + 'imap/get')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res.json();
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error.json() || 'Server error');
-    //         });
-    // }
+    async getImapList() {
+        return await this.http.get(this.updateUrl(`${this.API_URL}/imap/get`)).toPromise();
+    }
     // storeSmtp(body: any): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.Intercepted.post(environment['apibase'] + 'smtp/save', body)
@@ -642,19 +622,9 @@ export class ApiService {
     //             return Observable.throw(error.json() || 'Server error');
     //         });
     // }
-    // activateImap(email_id: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.Intercepted.put(environment['apibase'] + `imap/statusActive/${email_id}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res.json();
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error.json() || 'Server error');
-    //         });
-    // }
+    async activateImap(email_id: string) {
+        return await this.http.put(this.updateUrl(`${this.API_URL}/imap/statusActive/${email_id}`), {}).toPromise();
+    }
     // getSmtpList(): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.Intercepted.get(environment['apibase'] + 'smtp/get/1/10')

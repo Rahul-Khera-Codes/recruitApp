@@ -23,6 +23,10 @@ const routes: Routes = [
 				loadChildren: './components/dashboard/dashboard.module#DashboardModule'
 			},
 			{
+				path: 'settings',
+				loadChildren: './components/settings/settings.module#SettingsModule'
+			},
+			{
 				path: 'mail',
 				loadChildren: './components/apps/mail/mail.module#MailModule'
 			},

@@ -58,7 +58,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 					bullet: 'dot',
 					submenu: [
 						{
-							title: 'IMAP'
+							title: 'IMAP',
+							page: '/settings/imap',
 						},
 						{
 							title: 'SMTP'
