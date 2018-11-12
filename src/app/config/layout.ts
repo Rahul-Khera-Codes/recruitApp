@@ -13,7 +13,7 @@ export class LayoutConfig implements ConfigModel {
 		// == Page Loader(splash)
 		loader: {
 			enabled: true, // Enable page loader
-			image: './assets/demo/default/media/img/logo/logo_large.png'
+			image: './assets/logo-loder.png'
 		},
 
 		// == Header
@@ -40,8 +40,8 @@ export class LayoutConfig implements ConfigModel {
 					}
 				},
 				logo: {
-					dark: './assets/demo/default/media/img/logo/logo_default_dark.png',
-					light: './assets/demo/default/media/img/logo/logo_default_light.png'
+					dark: './assets/logo.png',
+					light: './assets/logo.png'
 				}
 			},
 

@@ -13,8 +13,7 @@ const routes: Routes = [
 		// canActivate: [NgxPermissionsGuard],
 		// data: {
 		// 	permissions: {
-		// 		only: ['Admin', 'USER'],
-		// 		except: ['GUEST'],
+		// 		only: ['Admin'],
 		// 		redirectTo: '/login'
 		// 	}
 		// },
