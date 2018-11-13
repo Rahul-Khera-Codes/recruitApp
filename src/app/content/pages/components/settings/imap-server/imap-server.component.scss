@@ -1,49 +1,87 @@
 // @import './../../variable.scss';
-// .main {
-//     width: 100%;
-//     min-height: 100%;
-// }
-// .width-90 {
-//     width: 90%;
-// }
-// .cardsub {
-//     color: inherit;
-//     font-size: 18px;
-// }
-// table.list {
-//     width: 100%;
-//     tr, th {
-//         text-align: center;
-//         border-bottom: 1px solid $tablistcolor;
-//         padding: 5px 0px;
-//         vertical-align: middle;
-//     }
-//     tbody {
-//         tr:hover {
-//             background: $tbodycolor;
-//         }
-//     }
-// }
-// .off {
-//     color: $offcolor;
-//     cursor: pointer;
-// }
-// .on {
-//     color: $oncolor;
-//     cursor: pointer;
-// }
-// .chartcolor {
-//     color: $charcolor;
-// }
-// .mainform {
-//     margin-bottom: 10px;
-// }
-// .note {
-//     font-weight: bold;
-//     font-style: italic;
-//     color: red;
-//     font-size: 10px;
-// }
-// .fetch-till {
-//     font-size: 10px;
-// }
+.main {
+    width: 100%;
+    min-height: 100%;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.cardsub {
+    color: inherit;
+    font-size: 18px;
+}
+
+table.list {
+    width: 100%;
+    tr,
+    th {
+        // text-align: center;
+        // border-bottom: 1px solid $tablistcolor;
+        padding: 5px 10px 5px 0px;
+        vertical-align: middle;
+    }
+}
+
+.table td {
+    padding: .75rem .75rem .75rem 0px;
+}
+
+.off {
+    color: red;
+    cursor: pointer;
+}
+
+.on {
+    color: green;
+    cursor: pointer;
+}
+
+.badges {
+    background-color: #554ebd;
+    border-radius: 50px;
+    color: white;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.mainform {
+    margin-bottom: 10px;
+}
+
+.note {
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+    font-size: 10px;
+}
+
+.fetch-till {
+    font-size: 10px;
+}
+
+td,
+th {
+    vertical-align: middle !important;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+.font500{
+    font-weight: 500;
+}
+.chartcolor {
+    color: #ff5d7e;
+}
+.tableStrip{
+    background: #efefef;
+}
+.pl-2{
+    padding-left: 2px;
+}

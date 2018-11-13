@@ -2,11 +2,12 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
 // import { historylog, Emaillist, SystemVar } from './mock-data';
 // import { InterceptedHttp } from './http.interceptor';
 import { Subject } from 'rxjs';
 // import { bitlySetup, config } from '../config/config';
-
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -47,16 +48,16 @@ export class ApiService {
     //             return Observable.throw(error.json() || 'Server error');
     //         });
     // }
-    // increaseAPiCount() {
-    //     ++this.count;
-    //     this.apiStartEvent.emit();
-    // }
-    // decreaseAPiCount() {
-    //     --this.count;
-    //     if (this.count === 0) {
-    //         this.apiEndEvent.emit();
-    //     }
-    // }
+    increaseAPiCount() {
+        ++this.count;
+        this.apiStartEvent.emit();
+    }
+    decreaseAPiCount() {
+        --this.count;
+        if (this.count === 0) {
+            this.apiEndEvent.emit();
+        }
+    }
     // getEmailList(body: any): Observable<any> {
     //     this.increaseAPiCount();
     //     if (!!body.type) {
@@ -554,19 +555,19 @@ export class ApiService {
     async deleteImap(id: string) {
         return await this.http.delete(this.updateUrl(`${this.API_URL}/imap/delete/${id}`)).toPromise();
     }
-    // storeImap(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.Intercepted.post(environment['apibase'] + 'imap/save', body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res.json();
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error.json() || 'Server error');
-    //         });
-    // }
+    storeImap(body): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.post(this.updateUrl(`${environment['apibase']}imap/save`), body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res.json();
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error.json() || 'Server error');
+            });
+    }
     async getImapList() {
         return await this.http.get(this.updateUrl(`${this.API_URL}/imap/get`)).toPromise();
     }

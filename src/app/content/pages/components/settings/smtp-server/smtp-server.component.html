@@ -1,0 +1,42 @@
+<div class="main">
+  <app-smtp-component-form (addedSMTP)="getSmtpList()"></app-smtp-component-form>
+    <div>
+        <mat-card>
+            <mat-card-subtitle class="cardsub">
+                SMTP Settings
+            </mat-card-subtitle>
+            <mat-card-content class="table-responsive">
+                <table id="table" class="list table">
+                    <thead>
+                        <tr>
+                            <th>Email ID</th>
+                            <th>Server</th>
+                            <th>Port</th>
+                            <th>Encryption</th>
+                            <th>Status</th>
+                            <th>Test</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr *ngFor="let setting of settingJson; trackBy: settingJsonTrack;">
+                            <td>{{setting.email}}</td>
+                            <td>{{setting.smtp_server}}</td>
+                            <td>{{setting.server_port}}</td>
+                            <td>{{setting.type}}</td>
+                            <td>
+                                <mat-icon id="status" class="{{setting.status ? 'on':'off'}}" (click)="changeStatus(setting.email, setting.status)"><i class="material-icons">{{setting.status ? 'done' : 'clear'}}</i></mat-icon>
+                            </td>
+                            <td>
+                                <button id="test" mat-button class="chartcolor" (click)="test(setting.email)">TEST</button>
+                            </td>
+                            <td>
+                                <button id="remove" mat-button class="chartcolor" [disabled]="setting.status" (click)="remove(setting.id)">REMOVE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

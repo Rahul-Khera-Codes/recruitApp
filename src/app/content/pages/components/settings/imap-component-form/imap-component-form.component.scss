@@ -1,0 +1,86 @@
+// // @import './../../variable.scss';
+// .main {
+//     width: 100%;
+//     min-height: 100%;
+// }
+// .width-90 {
+//     width: 90%;
+// }
+// .cardsub {
+//     color: inherit;
+//     font-size: 18px;
+// }
+// table.list {
+//     width: 100%;
+//     tr, th {
+//         text-align: center;
+//         border-bottom: 1px solid $tablistcolor;
+//         padding: 5px 0px;
+//         vertical-align: middle;
+//     }
+//     tbody {
+//         tr:hover {
+//             background: $tbodycolor;
+//         }
+//     }
+// }
+// .mainform {
+//     margin-bottom: 10px;
+// }
+// .error {
+//     color: $red;
+//     text-align: center;
+//     position: relative;
+//     left: -70px;
+// }
+.heading {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.background {
+    background: #564FC1;
+}
+
+.fontColor {
+    color: white;
+}
+.buttonForm{
+    background: #22b9ff;
+    border-radius: 20px;
+    color: white!important;
+    margin-top: 7px;
+
+}
+
+.error{
+    color: #e15353;
+    font-weight: 500;
+}
+input{
+    color: #9388fa;
+}
+.mat-datepicker-toggle, .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button{
+    color: #9388fa;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0px solid #564FC1;
+  -webkit-text-fill-color: #9388fa;
+  -webkit-box-shadow: 0 0 0px 1000px #564FC1 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.mat-input-placeholder {
+    color: #9388fa;
+}
+mat-form-field{
+    width: 100%;
+}

@@ -22,6 +22,7 @@ export class ImapServerComponent implements OnInit {
     async getImapList() {
         try {
             this.imapSettingJson = await this._apiService.getImapList();
+            console.log("this.imapSettingJson",this.imapSettingJson)
         } catch (e) {
             console.log(e);
         }

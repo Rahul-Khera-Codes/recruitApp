@@ -1,12 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { MatIconModule } from "@angular/material/icon";
 import { SettingsComponent } from './settings.component';
 import { ImapServerComponent } from './imap-server/imap-server.component';
+import { MatCardModule } from '@angular/material/card';
+import { ImapComponentFormComponent } from './imap-component-form/imap-component-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { SmtpServerComponent } from './smtp-server/smtp-server.component'
+
 @NgModule({
 	imports: [
 		CommonModule,
+		MatIconModule,
+		MatCardModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatDatepickerModule,
+		MatInputModule,
+		MatButtonModule,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -15,6 +32,9 @@ import { ImapServerComponent } from './imap-server/imap-server.component';
 					{
 						path: 'imap',
 						component: ImapServerComponent
+					}, {
+						path: 'smtp',
+						component: SmtpServerComponent
 					}
 				]
 			}
@@ -22,8 +42,10 @@ import { ImapServerComponent } from './imap-server/imap-server.component';
 	],
 	providers: [],
 	declarations: [
+		ImapComponentFormComponent,
 		SettingsComponent,
-		ImapServerComponent
+		ImapServerComponent,
+		SmtpServerComponent
 	]
 })
 export class SettingsModule { }

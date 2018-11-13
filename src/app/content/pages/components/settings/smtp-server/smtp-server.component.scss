@@ -1,0 +1,40 @@
+@import './../../variable.scss';
+.main {
+    width: 100%;
+    min-height: 100%;
+}
+.width-90 {
+    width: 90%;
+}
+.cardsub {
+    color: inherit;
+    font-size: 18px;
+}
+table.list {
+    width: 100%;
+    tr, th {
+        text-align: center;
+        border-bottom: 1px solid $tablistcolor;
+        padding: 5px 0px;
+        vertical-align: middle;
+    }
+    tbody {
+        tr:hover {
+            background: $tbodycolor;
+        }
+    }
+}
+.off {
+    color: $offcolor;
+    cursor: pointer;
+}
+.on {
+    color: $oncolor;
+    cursor: pointer;
+}
+.chartcolor {
+    color: $charcolor;
+}
+.mainform {
+    margin-bottom: 10px;
+}

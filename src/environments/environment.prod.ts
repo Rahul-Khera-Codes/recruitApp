@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  isMockEnabled: true // You have to switch this, when your real back-end is done
+  'apibase': 'http://api.recruit.excellencetechnologies.in/',
+  'fb_loginAppid' : '386827718017067',
+  'fb_version': 'v2.5'
 };
