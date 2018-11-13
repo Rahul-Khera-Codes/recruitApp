@@ -44,11 +44,16 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 .mat-input-placeholder {
-    color: #9388fa;
+    color: #c8c5eb;
+}
+.lineH-3-5{
+    line-height: 3.5;
 }
 mat-form-field{
     width: 100%;
 }
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #c8c5eb;
 }
+

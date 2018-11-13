@@ -62,12 +62,14 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 							page: '/settings/imap',
 						},
 						{
-							title: 'SMTP'
+							title: 'SMTP',
+							page: '/settings/smtp',
 						}
 					]
 				},
 				{
 					title: 'Slack Info',
+					page:'/settings/slackInfo',
 					bullet: 'dot'
 				},
 				{

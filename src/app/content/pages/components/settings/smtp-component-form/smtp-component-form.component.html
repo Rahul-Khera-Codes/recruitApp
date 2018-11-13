@@ -1,0 +1,108 @@
+<div class="mainform">
+    <mat-card class="background">
+        <form id="smtpForm" autoComplete="off" #smtpForm="ngForm" (ngSubmit)="addSMTP(smtpForm)">
+            <mat-card-subtitle class="cardsub heading fontColor">
+                SMTP Server
+            </mat-card-subtitle>
+            <mat-card-subtitle id="showError" class="error" *ngIf="showmessage">{{message}}</mat-card-subtitle>
+            <mat-card-content>
+                <div class="row">
+                    <div id="smtpFormUserEmail" class="col-md-4 col-sm-12">
+                        <mat-form-field appearance="outline"  class="width-90">
+                            <input matInput name="username" placeholder="Email/User Name" ngModel autoComplete="off" required>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div  id="smtpFormSendEmail" class="col-md-4 col-sm-12">
+                        <mat-form-field appearance="outline"  class="width-90">
+                            <input matInput name="email" placeholder="Email (send via)" ngModel autoComplete="off" [formControl]="emailFormControl" required>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                This field is required
+                            </mat-error>
+                            <mat-error *ngIf="emailFormControl.hasError('pattern')">
+                                Please enter a valid email address
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div id="smtpFormPassword"  class="col-md-4 col-sm-12">
+                        <mat-form-field appearance="outline"  class="width-90">
+                            <input matInput name="password" type="password" placeholder="Password" required ngModel autoComplete="off">
+                            <mat-error>Password Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div id="smtpFormServerName" class="col-md-4 col-sm-12">
+                        <mat-form-field appearance="outline"  class="width-90">
+                            <input matInput name="smtp_server" placeholder="SMTP Server" required ngModel autoComplete="off">
+                            <mat-error>Invalid Server ID</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div id="smtpFormPort" class="col-md-4 col-sm-12">
+                        <mat-form-field appearance="outline"  class="width-90">
+                            <input matInput name="server_port" type="number" placeholder="Server port" min="1" required ngModel autoComplete="off">
+                            <mat-error>Invalid Port</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div id="smtpFormRadio" class="col-md-4 col-sm-12 lineH-3-5">
+                        <mat-radio-group name="type" id="type" required ngModel>
+                            <mat-radio-button id="option1" name="type" value="ssl"  class="font-color" checked>SSL</mat-radio-button>
+                            <mat-radio-button id="option2" name="type" value="tls" class="font-color" >TLS</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div id="smtpFormSave" class="col-sm-12">
+                            <button id="save" type="submit" class="buttonForm"mat-button color="success" [disabled]="smtpForm.invalid || emailFormControl.invalid"> Save </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>
+
+
+
+<!-- <div class="mainform">
+        <mat-card class="background">
+            <form id="imapForm" autoComplete="off" #imapForm="ngForm" (ngSubmit)="addImap(imapForm)">
+                <mat-card-subtitle class="cardsub heading fontColor">
+                    Incoming Resume Gmail Login
+                </mat-card-subtitle>
+                <mat-card-subtitle id="showError" class="error" *ngIf="showmessage">{{message}}</mat-card-subtitle>
+                <mat-card-content>
+                    <div class="row">
+                        <div id="FormEmail" class="col-md-3 col-sm-6">
+                            <mat-form-field appearance="outline"  class="width-90">
+                                <input type="email" matInput name="email" placeholder="Email" ngModel autoComplete="off" [formControl]="emailFormControl">
+                                <mat-error *ngIf="emailFormControl.hasError('required')">
+                                    This field is required
+                                </mat-error>
+                                <mat-error *ngIf="emailFormControl.hasError('pattern')">
+                                    Please enter a valid email address
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div id="FormPassword" class="col-md-3 col-sm-6">
+                            <mat-form-field  appearance="outline" class="width-90">
+                                <input matInput name="password" type="password" placeholder="Password" required ngModel autoComplete="off">
+                                <mat-error>Password Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div id="FormDate" class="col-md-4 col-sm-12">
+                            <mat-form-field   appearance="outline" class="width-90">
+                                <input placeholder="Date" id="date" matInput [matDatepicker]="picker" required [formControl]="dateFormControl" autocomplete="off">
+                                <mat-error *ngIf="dateFormControl.hasError('required')">
+                                    Date is required
+                                </mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            </mat-form-field>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </div>
+                        <div id="FormButton" class="col-md-2">
+                            <button id="save" type="submit" class="buttonForm"mat-button color="success" [disabled]="imapForm.invalid || emailFormControl.invalid || dateFormControl.invalid"> Save </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </form>
+        </mat-card>
+    </div> -->
+    

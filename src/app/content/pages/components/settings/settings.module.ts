@@ -12,7 +12,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SmtpServerComponent } from './smtp-server/smtp-server.component'
-
+import { SmtpComponentFormComponent } from './smtp-component-form/smtp-component-form.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { SlackInfoComponent } from './slack-info/slack-info.component';
+import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
 @NgModule({
 	imports: [
 		CommonModule,
@@ -23,6 +26,7 @@ import { SmtpServerComponent } from './smtp-server/smtp-server.component'
 		MatFormFieldModule,
 		MatDatepickerModule,
 		MatInputModule,
+		MatRadioModule,
 		MatButtonModule,
 		RouterModule.forChild([
 			{
@@ -35,6 +39,9 @@ import { SmtpServerComponent } from './smtp-server/smtp-server.component'
 					}, {
 						path: 'smtp',
 						component: SmtpServerComponent
+					}, {
+						path: 'slackInfo',
+						component: SlackInfoComponent
 					}
 				]
 			}
@@ -45,7 +52,10 @@ import { SmtpServerComponent } from './smtp-server/smtp-server.component'
 		ImapComponentFormComponent,
 		SettingsComponent,
 		ImapServerComponent,
-		SmtpServerComponent
+		SmtpServerComponent,
+		SmtpComponentFormComponent,
+		SlackInfoComponent,
+		SlackComponentFormComponent
 	]
 })
 export class SettingsModule { }

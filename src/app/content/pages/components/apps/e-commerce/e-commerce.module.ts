@@ -131,9 +131,8 @@ const routes: Routes = [
 		MatProgressSpinnerModule,
 		MatSnackBarModule,
 		MatTabsModule,
-		MatTooltipModule,
-		environment.isMockEnabled ? HttpClientInMemoryWebApiModule.forFeature(FakeApiService) : []
-	],
+		MatTooltipModule
+		],
 	providers: [
 		InterceptService,
       	{
