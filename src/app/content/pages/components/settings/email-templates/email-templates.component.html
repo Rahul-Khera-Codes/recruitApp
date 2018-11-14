@@ -1,0 +1,19 @@
+<!-- <div class="well contain">
+    <div class="row head">
+        <mat-select placeholder="Job Profile" class="col-md-3 width"  name="job_profile" [(ngModel)]="currentJobProfile" (ngModelChange)="change($event)" required>
+            <mat-option *ngFor="let tags of jobProfile" [value]="tags.tag_id">
+                {{ tags.title }}
+            </mat-option>
+        </mat-select>
+        <div class="col-md-10 text-right">
+            <button mat-raised-button color=accent  (click)="addTemp()">ADD NEW TEMPLATE</button>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let temps of tempData; let i=index; trackBy: tempDataTrack;">
+            <div *ngIf="currentJobProfile==temps.job_profile || currentJobProfile==0" class="col-md-6" >
+                <app-single-template [temp]="temps" (testTemp)="testTemplate($event)" (deleteTemp)="deleteTempId($event); tempData.splice(i,1)" (edits)="editTemp($event)"></app-single-template>
+            </div>
+        </div>
+    </div>
+</div> -->

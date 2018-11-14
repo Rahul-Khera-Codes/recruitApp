@@ -69,7 +69,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Slack Info',
-					page:'/settings/slackInfo',
+					page: '/settings/slackInfo',
 					bullet: 'dot'
 				},
 				{
@@ -77,7 +77,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 					bullet: 'dot',
 					submenu: [
 						{
-							title: 'Email Templates'
+							title: 'Email Templates',
+							page: '/settings/emailTemplate'
 						},
 						{
 							title: 'Email Variables'

@@ -473,84 +473,84 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getUserVariable(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + 'variable/get/1/20')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // getSystemVariable(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + 'systemVariable/get/1/20')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // addUserVariable(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + 'variable/add/', body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // deleteVariable(id: string): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.delete(environment['apibase'] + 'variable/delete/' + id)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // updateVariable(body: any, id: string): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + 'variable/update/' + id, body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // addTemplate(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + 'template/add/', body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    getUserVariable(): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + 'variable/get/1/20'))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    getSystemVariable(): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + 'systemVariable/get/1/20'))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    addUserVariable(body): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.post(this.updateUrl(environment['apibase'] + 'variable/add/'), body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    deleteVariable(id: string): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.delete(this.updateUrl(environment['apibase'] + 'variable/delete/' + id))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    updateVariable(body: any, id: string): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.put(this.updateUrl(environment['apibase'] + 'variable/update/' + id), body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    addTemplate(body: any): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.post(this.updateUrl(environment['apibase'] + 'template/add/'), body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // getEmailName(): Promise<any[]> {
     //     return Promise.resolve(Emaillist);
     // }

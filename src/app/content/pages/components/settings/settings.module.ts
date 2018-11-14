@@ -16,6 +16,7 @@ import { SmtpComponentFormComponent } from './smtp-component-form/smtp-component
 import { MatRadioModule } from '@angular/material/radio';
 import { SlackInfoComponent } from './slack-info/slack-info.component';
 import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
+import { EmailTemplatesComponent } from './email-templates/email-templates.component'
 @NgModule({
 	imports: [
 		CommonModule,
@@ -42,6 +43,9 @@ import { SlackComponentFormComponent } from './slack-component-form/slack-compon
 					}, {
 						path: 'slackInfo',
 						component: SlackInfoComponent
+					}, {
+						path: 'emailTemplate',
+						component: EmailTemplatesComponent
 					}
 				]
 			}
@@ -55,7 +59,8 @@ import { SlackComponentFormComponent } from './slack-component-form/slack-compon
 		SmtpServerComponent,
 		SmtpComponentFormComponent,
 		SlackInfoComponent,
-		SlackComponentFormComponent
+		SlackComponentFormComponent,
+		EmailTemplatesComponent
 	]
 })
 export class SettingsModule { }
