@@ -30,10 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { GestureConfig, MatProgressSpinnerModule } from '@angular/material';
 import { OverlayModule } from '@angular/cdk/overlay';
-
 import { MessengerService } from './core/services/messenger.service';
 import { ClipboardService } from './core/services/clipboard.sevice';
-
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { LayoutConfigStorageService } from './core/services/layout-config-storage.service';

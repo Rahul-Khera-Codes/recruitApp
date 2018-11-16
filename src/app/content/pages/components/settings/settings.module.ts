@@ -17,6 +17,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { SlackInfoComponent } from './slack-info/slack-info.component';
 import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
 import { EmailTemplatesComponent } from './email-templates/email-templates.component'
+import { TagSettingComponent } from './tag-setting/tag-setting.component';
+import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
+import { AddTagComponent } from './tag-setting/modal/add-tag/add-tag.component';
+import { PartialsModule } from '../../../partials/partials.module';
+import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
 @NgModule({
 	imports: [
 		CommonModule,
@@ -29,6 +34,19 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		MatInputModule,
 		MatRadioModule,
 		MatButtonModule,
+		MatDialogModule,
+		MatProgressSpinnerModule,
+		PartialsModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSelectModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		MatIconModule,
+		MatInputModule,
+		MatSlideToggleModule,
+		ReactiveFormsModule,
+		MatChipsModule,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -46,10 +64,18 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 					}, {
 						path: 'emailTemplate',
 						component: EmailTemplatesComponent
+					},
+					{
+						path: 'tag-setting',
+						component: TagSettingComponent
 					}
 				]
 			}
 		])
+	],
+	entryComponents: [
+		AddTagComponent,
+		ManualTagComponent
 	],
 	providers: [],
 	declarations: [
@@ -60,7 +86,10 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		SmtpComponentFormComponent,
 		SlackInfoComponent,
 		SlackComponentFormComponent,
-		EmailTemplatesComponent
+		EmailTemplatesComponent,
+		TagSettingComponent,
+		AddTagComponent,
+		ManualTagComponent
 	]
 })
 export class SettingsModule { }

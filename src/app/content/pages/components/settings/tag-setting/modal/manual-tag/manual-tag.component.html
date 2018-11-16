@@ -1,0 +1,21 @@
+<div class="editTag">
+	<h3>Edit Tag</h3>
+</div>
+<hr>
+<div class="body">
+	<div class="col-lg-12">
+		<label for="exampleInputEmail1">Title</label>
+		<input type="email" matInput name="title" id='title' placeholder="Title" [(ngModel)]="originaltitle" required class="form-control m-input m-input--air" aria-describedby="emailHelp" placeholder="Enter Title">
+		<mat-error></mat-error>
+	</div>
+	<div class="col-lg-12 tagColor">
+		<label for="example-color-input">Tag Color</label>
+		<input class="form-control m-input" name="color" [(ngModel)]="originalcolor" type="color" id="example-color-input">
+	</div>
+</div>
+<div id="tagBtn" class="col-md-12 col-sm-12 tagButn">
+	<button mat-raised-button id="close" class="savebtn" (click)="close()">Close</button>
+	<button mat-raised-button id="save" class="savebtn mat-primary" [disabled]="addForm.invalid || showloading" (click)="save()">
+		Save
+	</button>
+</div>

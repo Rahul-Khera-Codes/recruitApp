@@ -1,0 +1,43 @@
+<div class="mainform">
+	<mat-card class="background">
+		<mat-card-subtitle class="cardsub heading fontColor">
+			Default Tag(s)
+		</mat-card-subtitle>
+		<mat-card-subtitle id="showError" class="error" *ngIf="showmessage">{{message}}</mat-card-subtitle>
+		<mat-card-content>
+			<mat-spinner *ngIf="loading" class="m-2" style="display:inline-block" [diameter]='20'></mat-spinner>
+			<div class="row">
+				<div class="m-demo box" data-code-preview="true" data-code-html="true" data-code-js="false">
+					<div class="m-demo__preview  m-demo__preview--btn box">
+						<button type="button" class="btn m-btn--pill btn-shadow" [style.background-color]="tag.color" *ngFor="let tag of tags?.Default">
+							<span class="tags">{{tag.title.charAt(0)}}</span>
+							<span class="tag"> {{tag.title}}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<mat-card class="manualtag">
+		<mat-card-subtitle class="cardsub heading fontColor">
+			Manual tag(s)
+			<div class="row">
+				<div class="m-demo box" data-code-preview="true" data-code-html="true" data-code-js="false">
+					<div class="m-demo__preview  m-demo__preview--btn box">
+						<button type="button" class="btn m-btn--pill btn-shadow" [style.background-color]="tag.color" *ngFor="let tag of tags?.Manual">
+							<span (click)="openManual(tag)" class="tags">{{tag.title.charAt(0)}}</span>
+							<span (click)="openManual(tag)" class="tags"> {{tag.title}}
+							</span>
+							<mat-icon class="iconset tag remove" (click)="removeTag(tag.id,'Manual')">cancel</mat-icon>
+						</button>
+					</div>
+				</div>
+			</div>
+		</mat-card-subtitle>
+	</mat-card>
+	<div class="pos-add">
+		<button id="AddTag" mat-fab (click)="addTag()">
+			<mat-icon>add</mat-icon>
+		</button>
+	</div>
+</div>
