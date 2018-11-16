@@ -11,7 +11,7 @@
 <!-- </div> -->
 
 <ng-template #mMenuListing>
-	<ng-container *ngFor="let child of menuAsideService.menuList$ | async">
+	<ng-container *ngFor="let child of menuList">
 		<m-menu-section *ngIf="child.section" [item]="child"></m-menu-section>
 		<ng-container *ngIf="child.title" [ngTemplateOutlet]="mMenuItem" [ngTemplateOutletContext]="{ item: child, parentItem: item }"></ng-container>
 	</ng-container>

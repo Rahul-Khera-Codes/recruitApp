@@ -466,6 +466,67 @@ export class MenuConfig implements ConfigModel {
 					},
 					{section: 'Components'},
 					{
+						title: 'Inbox',
+						root: true,
+						bullet: 'dot',
+						icon: 'flaticon-interface-7',
+						submenu: [
+							{
+								title: 'Web Developer',
+								bullet: 'dot',
+								submenu: [
+									{
+										title: 'All',
+										page: '/material/form-controls/autocomplete'
+									},
+									{
+										title: 'Genuine Applicant',
+										page: '/material/form-controls/checkbox'
+									},
+									{
+										title: 'CV Rejected',
+										page: '/material/form-controls/radiobutton'
+									},
+									{
+										title: 'Shortlist',
+										page: '/material/form-controls/datepicker'
+									},
+									{
+										title: 'First Round',
+										page: '/material/form-controls/formfield'
+									},
+									{
+										title: 'Second Round',
+										page: '/material/form-controls/input'
+									},
+									{
+										title: 'Third Round',
+										page: '/material/form-controls/select'
+									},
+									{
+										title: 'Hold',
+										page: '/material/form-controls/slider'
+									},
+									{
+										title: 'No Response',
+										page:
+											'/material/form-controls/slidertoggle'
+									},
+									{
+										title: 'Reject',
+										page:
+											'/material/form-controls/slidertoggle'
+									},
+									{
+										title: 'Selected',
+										page:
+											'/material/form-controls/slidertoggle'
+									}
+								]
+							}
+						]
+					},
+					{
 						title: 'Google Material',
 						root: true,
 						bullet: 'dot',

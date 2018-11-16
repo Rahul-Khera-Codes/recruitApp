@@ -10,18 +10,14 @@ const routes: Routes = [
 	{
 		path: '',
 		component: PagesComponent,
-		canActivate: [NgxPermissionsGuard],
-		data: {
-			permissions: {
-				only: ['ADMIN', 'USER'],
-				except: ['GUEST'],
-				redirectTo: '/login'
-			}
-		},
 		children: [
 			{
 				path: '',
 				loadChildren: './components/dashboard/dashboard.module#DashboardModule'
+			},
+			{
+				path: 'settings',
+				loadChildren: './components/settings/settings.module#SettingsModule'
 			},
 			{
 				path: 'mail',

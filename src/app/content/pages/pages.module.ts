@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 
+import { SettingsModule } from './components/settings/settings.module';
 @NgModule({
 	declarations: [
 		PagesComponent,
@@ -32,7 +33,8 @@ import { ErrorPageComponent } from './snippets/error-page/error-page.component';
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
+		SettingsModule
 	],
 	providers: []
 })
-export class PagesModule {}
+export class PagesModule { }
