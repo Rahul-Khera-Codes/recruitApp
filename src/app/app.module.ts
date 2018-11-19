@@ -46,7 +46,10 @@ import { MenuAsideService } from './core/services/layout/menu-aside.service';
 import { LayoutRefService } from './core/services/layout/layout-ref.service';
 import { SplashScreenService } from './core/services/splash-screen.service';
 import { DataTableService } from './core/services/datatable.service';
+import { DialogService } from './core/services/dialog.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
+import {DatePipe} from '@angular/common'
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	// suppressScrollX: true
 };
@@ -58,6 +61,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
+		MatDialogModule,
 		// environment.isMockEnabled ? HttpClientInMemoryWebApiModule.forRoot(FakeApiService) : [],
 		LayoutModule,
 		PartialsModule,
@@ -95,10 +99,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		HeaderService,
 		MenuHorizontalService,
 		MenuAsideService,
+		DatePipe,
 		{
 			provide: HAMMER_GESTURE_CONFIG,
 			useClass: GestureConfig
-		}
+		},
+		DialogService
 	],
 	bootstrap: [AppComponent]
 })

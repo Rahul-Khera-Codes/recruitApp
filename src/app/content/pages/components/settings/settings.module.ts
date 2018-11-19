@@ -16,7 +16,14 @@ import { SmtpComponentFormComponent } from './smtp-component-form/smtp-component
 import { MatRadioModule } from '@angular/material/radio';
 import { SlackInfoComponent } from './slack-info/slack-info.component';
 import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
-import { EmailTemplatesComponent } from './email-templates/email-templates.component'
+import { EmailTemplatesComponent } from './email-templates/email-templates.component';
+import { SingleTemplateComponent } from './single-template/single-template.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddEmailTempComponent } from './add-email-temp/add-email-temp.component';
+import { TemplateEditComponent } from './template-edit/template-edit.component';
+import { TestTemplateComponent } from './test-template/test-template.component';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -29,6 +36,8 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		MatInputModule,
 		MatRadioModule,
 		MatButtonModule,
+		MatDialogModule,
+		MatSelectModule,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -46,6 +55,20 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 					}, {
 						path: 'emailTemplate',
 						component: EmailTemplatesComponent
+					}, {
+						path: 'singleTemplate',
+						component: SingleTemplateComponent
+					},
+					 {
+						path: 'addEmailTemplate',
+						component: AddEmailTempComponent
+					},
+					 {
+						path: 'editTemplate',
+						component: TemplateEditComponent
+					}, {
+						path: 'testTemplate',
+						component: TestTemplateComponent
 					}
 				]
 			}
@@ -60,7 +83,12 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		SmtpComponentFormComponent,
 		SlackInfoComponent,
 		SlackComponentFormComponent,
-		EmailTemplatesComponent
+		EmailTemplatesComponent,
+		SingleTemplateComponent,
+		AddEmailTempComponent,
+		TemplateEditComponent,
+		TestTemplateComponent,
+		
 	]
 })
 export class SettingsModule { }

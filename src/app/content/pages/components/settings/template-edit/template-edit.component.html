@@ -1,0 +1,53 @@
+<div class="header">
+    <p class="h-text">Create Template</p>
+</div>
+<form autoComplete="off" #Temp="ngForm" (ngSubmit)="update(Temp)">
+    <div class="con-pg" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+      <div class="row">
+        <div class="main col-sm-8">
+            <p>
+                <mat-select placeholder="Job Profile" class="col-md-3 jobProfile" name="job_profile" [(ngModel)]="tempJobProfileId" required>
+                    <mat-option *ngFor="let tags of jobProfile" [value]="tags.tag_id">
+                        {{ tags.title }}
+                    </mat-option>
+                </mat-select>
+                <mat-form-field class="width-100">
+                    <input matInput placeholder="Template Name" [(ngModel)]="tempName" autoComplete="off" name="templateName" required ngModel>
+                    <mat-error>Required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="width-100">
+                    <input matInput placeholder="Subject" [(ngModel)]="subject" autoComplete="off" name="subject" required ngModel>
+                    <mat-error>Required</mat-error>
+                </mat-form-field>
+                <!-- <ckeditor name="body"
+                    [(ngModel)]="ckeditorContent"
+                    [config]="{uiColor: '#00ffff'}"
+                    debounce="500" ngModel>
+                </ckeditor> -->
+            </p>
+        </div>
+        <div class="side">
+            <div class="col-sm-4">
+            <mat-card class="side-nav">
+                <button mat-button class="h-d">System Variables</button>
+                <mat-card-content class="d-c">
+                    <a mat-button class="con-btn" *ngFor="let svar of sysVar">{{svar.variableCode}}</a>
+                </mat-card-content>
+            </mat-card>
+            <br/>
+            <mat-card class="side-nav">
+                <button mat-button class="h-d">User Variables</button>
+                <mat-card-content class="d-c">
+                    <a mat-button class="con-btn" *ngFor="let uvar of userVar">{{uvar.variableCode}}</a>
+                </mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+    <hr>
+    <div class="fx-pos">
+    	<button mat-raised-button type="button" (click)="close()">Back</button>
+    	<button mat-raised-button type="submit" color="accent">Update</button>
+    </div>
+</form>

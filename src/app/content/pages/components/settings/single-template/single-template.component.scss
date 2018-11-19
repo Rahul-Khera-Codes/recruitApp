@@ -1,0 +1,43 @@
+// @import './../../variable.scss';
+// mat-card {
+// 	padding: 0px;
+// 	margin-top: 10px;
+// }
+// mat-card-header {
+// 	background-color: $si-tem-color;
+// 	padding: 10px 0px 0px 12px;
+// }
+// .set-pos {
+// 	text-align: center;
+// 	display: block;
+// 	margin: 0px 0px 14px 0px !important;
+// 	padding-bottom: 8px!important;
+// }
+// .e-c {
+//     color: $emailbluecolor;
+// }
+// .m-e {
+//     color: $emailtempedit;
+// }
+// .d-c {
+//     color: $emailtempdelete;
+// }
+// .pad {
+// 	padding: 12px;
+// 	word-break: break-all;
+// }
+
+
+.m-widget2 .m-widget2__item .m-widget2__desc {
+    padding-left: 2.3rem !important;
+}
+.m-subheader .m-subheader__daterange {
+    display: inline-block;
+    border-radius: 2rem;
+    padding: 5px;
+    cursor: pointer;
+    background: #fff;
+}
+.m-subheader .m-subheader__daterange .m-subheader__daterange-label {
+    padding: 0.7rem 0.75rem 0.7rem 1.5rem;
+}

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
-// import { AddEmailTempComponent } from '../add-email-temp/add-email-temp.component';
-// import { TemplateEditComponent } from '../template-edit/template-edit.component';
-// import { TestTemplateComponent } from '../test-template/test-template.component';
-// import { LocalStorageService } from 'app/service/local-storage.service';
+import { AddEmailTempComponent } from '../add-email-temp/add-email-temp.component';
+import { TemplateEditComponent } from '../template-edit/template-edit.component';
+import { TestTemplateComponent } from '../test-template/test-template.component';
+import { LocalStorageService } from '../../../../../core/services/local-storage.service';
 import { ApiService } from '../../../../../core/services/api.service';
 import * as _ from 'lodash';
 import { config } from './../../../../../config/config';
 import { MatSnackBar } from '@angular/material';
-// import { CommonService } from '../../service/common.service';
+import { CommonService } from '../../../../../core/services/common.service';
 
 @Component({
     selector: 'app-email-templates',
@@ -16,44 +16,48 @@ import { MatSnackBar } from '@angular/material';
     styleUrls: ['./email-templates.component.scss']
 })
 export class EmailTemplatesComponent implements OnInit {
-    dialogRef: MatDialogRef < any > ;
+    dialogRef: MatDialogRef<any>;
     userVar: string[];
     sysVar: string[];
     tempData: string[];
-    tags:any;
-    jobProfile:Array<any> = config.showJobProfile;
-    currentJobProfile:any;
+    tags: any;
+    jobProfile: Array<any> = config.showJobProfile;
+    currentJobProfile: any;
     constructor(public dialog: MatDialog,
-         private getVariable: ApiService, 
-         public snackBar: MatSnackBar, 
-        //  public localStorageService: LocalStorageService,
-        //   public commonService:CommonService
-        ) { }
+        private getVariable: ApiService,
+        public snackBar: MatSnackBar,
+        public _change: ChangeDetectorRef,
+        public localStorageService: LocalStorageService,
+        public commonService: CommonService
+    ) { }
 
     ngOnInit() {
         this.getVariable.getUserVariable().subscribe((data) => {
             this.userVar = data;
+            this._change.detectChanges();
         });
         this.getVariable.getSystemVariable().subscribe(data => {
             this.sysVar = data;
+            this._change.detectChanges();
         });
         this.loadTemp();
-        // this.currentJobProfile = this.jobProfile[0].tag_id;
-        // this.tags = this.localStorageService.getItem('allTags');
-        // this.jobProfile = this.commonService.jobProfile(this.tags,this.jobProfile);
+        this.currentJobProfile = this.jobProfile[0].tag_id;
+        this.tags = this.localStorageService.getItem('allTags');
+        this.jobProfile = this.commonService.jobProfile(this.tags, this.jobProfile);
     }
 
     loadTemp() {
         this.getVariable.getTemplate().subscribe(data => {
             this.tempData = data;
+            this._change.detectChanges();
         });
     }
 
     addTemp() {
-        // this.dialogRef = this.dialog.open(AddEmailTempComponent, {
-        //     height: '90%',
-        //     width: '80%'
-        // });
+        this.dialogRef = this.dialog.open(AddEmailTempComponent, {
+            height: '90%',
+            width: '80%'
+        });
         this.dialogRef.componentInstance.userVar = this.userVar;
         this.dialogRef.componentInstance.sysVar = this.sysVar;
         this.dialogRef.afterClosed().subscribe(result => {
@@ -64,14 +68,15 @@ export class EmailTemplatesComponent implements OnInit {
                 this.loadTemp();
             }
             this.dialogRef = null;
+            this._change.detectChanges();
         });
     }
 
     editTemp(temp: any) {
-        // this.dialogRef = this.dialog.open(TemplateEditComponent, {
-        //     height: '90%',
-        //     width: '80%'
-        // });
+        this.dialogRef = this.dialog.open(TemplateEditComponent, {
+            height: '90%',
+            width: '80%'
+        });
         this.dialogRef.componentInstance.userVar = this.userVar;
         this.dialogRef.componentInstance.sysVar = this.sysVar;
         this.dialogRef.componentInstance.temp = temp;
@@ -83,14 +88,15 @@ export class EmailTemplatesComponent implements OnInit {
             }
             this.dialogRef = null;
             this.loadTemp();
+            this._change.detectChanges();
         });
     }
 
     testTemplate(temp: any) {
-        // this.dialogRef = this.dialog.open(TestTemplateComponent, {
-        //     height: '40%',
-        //     width: '60%'
-        // });
+        this.dialogRef = this.dialog.open(TestTemplateComponent, {
+            height: '40%',
+            width: '60%'
+        });
         this.dialogRef.componentInstance.temp = temp;
         this.dialogRef.afterClosed().subscribe(result => {
             if (result === 'done') {
@@ -99,6 +105,7 @@ export class EmailTemplatesComponent implements OnInit {
                 });
             }
             this.dialogRef = null;
+            this._change.detectChanges();
             this.loadTemp();
         });
     }
@@ -115,6 +122,7 @@ export class EmailTemplatesComponent implements OnInit {
                 duration: 2000,
             });
         });
+        this._change.detectChanges();
     }
 
     tempDataTrack(index, data) {
@@ -123,5 +131,6 @@ export class EmailTemplatesComponent implements OnInit {
 
     change(value) {
         this.currentJobProfile = value;
+        this._change.detectChanges();
     }
 }
