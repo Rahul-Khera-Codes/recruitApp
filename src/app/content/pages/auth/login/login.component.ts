@@ -13,7 +13,7 @@ import { AuthenticationService } from '../../../../core/auth/authentication.serv
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthNoticeService } from '../../../../core/auth/auth-notice.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as objectPath from 'object-path';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-button/button-options.interface';
@@ -26,6 +26,7 @@ import { SpinnerButtonOptions } from '../../../partials/content/general/spinner-
 })
 export class LoginComponent implements OnInit, OnDestroy {
 	public model: any = { email: '123@gmail.com', password: '123' };
+	loginForm: FormGroup;
 	@HostBinding('class') classes: string = 'm-login__signin';
 	@Output() actionChange = new Subject<string>();
 	public loading = false;
@@ -49,31 +50,34 @@ export class LoginComponent implements OnInit, OnDestroy {
 		private router: Router,
 		public authNoticeService: AuthNoticeService,
 		private translate: TranslateService,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private formBuilder: FormBuilder
 	) { }
 
-	async submit() {
-		this.spinner.active = true;
-		console.log(this.validate(this.f))
-		if (this.validate(this.f)) {
-			try {
-				const response = await this.authService.login(this.model).toPromise();
-				console.log(response,typeof response !== 'undefined')
-				if (typeof response !== 'undefined') {
-					this.router.navigate(['/']);
-				}
-				this.spinner.active = false;
-				this.cdr.detectChanges();
-			} catch (e) {
-				this.spinner.active = false;
-				this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'error');
-				this.cdr.detectChanges();
-				console.log(e);
+	async onLogin(formData) {
+		this.loading = true;
+		try {
+			const response = await this.authService.login(formData).toPromise();
+			console.log(response, typeof response !== 'undefined')
+			if (typeof response !== 'undefined') {
+				this.router.navigate(['/']);
 			}
+			this.loading = false;
+			this.cdr.detectChanges();
+		} catch (e) {
+			this.authNoticeService.setNotice(this.translate.instant('AUTH.VALIDATION.INVALID_LOGIN'), 'error');
+			this.cdr.detectChanges();
+			console.log(e);
 		}
 	}
 
 	ngOnInit(): void {
+		this.loginForm = this.formBuilder.group({
+			email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9](\.?[a-z0-9_-]){0,}@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$')])],
+			password: ['', Validators.required],
+			keeplogin: true
+		});
+
 		if (!this.authNoticeService.onNoticeChanged$.getValue()) {
 			const initialNotice = `Use your account details to continue.`;
 			this.authNoticeService.setNotice(initialNotice, 'success');

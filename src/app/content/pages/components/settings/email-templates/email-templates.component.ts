@@ -6,7 +6,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 // import { LocalStorageService } from 'app/service/local-storage.service';
 import { ApiService } from '../../../../../core/services/api.service';
 import * as _ from 'lodash';
-// import { config } from './../../config/config';
+import { config } from './../../../../../config/config';
 import { MatSnackBar } from '@angular/material';
 // import { CommonService } from '../../service/common.service';
 
@@ -21,7 +21,7 @@ export class EmailTemplatesComponent implements OnInit {
     sysVar: string[];
     tempData: string[];
     tags:any;
-    // jobProfile:Array<any> = config.showJobProfile;
+    jobProfile:Array<any> = config.showJobProfile;
     currentJobProfile:any;
     constructor(public dialog: MatDialog,
          private getVariable: ApiService, 
@@ -44,9 +44,9 @@ export class EmailTemplatesComponent implements OnInit {
     }
 
     loadTemp() {
-        // this.getVariable.getTemplate().subscribe(data => {
-        //     this.tempData = data;
-        // });
+        this.getVariable.getTemplate().subscribe(data => {
+            this.tempData = data;
+        });
     }
 
     addTemp() {
@@ -104,17 +104,17 @@ export class EmailTemplatesComponent implements OnInit {
     }
 
     deleteTempId(id: string) {
-        // this.getVariable.deleteTemplate(id).subscribe((data) => {
-        //     this.loadTemp();
-        //     this.snackBar.open('Template Deleted Successfully', '', {
-        //         duration: 2000,
-        //     });
-        // }, (err) => {
-        //     console.log(err);
-        //     this.snackBar.open(err.message, '', {
-        //         duration: 2000,
-        //     });
-        // });
+        this.getVariable.deleteTemplate(id).subscribe((data) => {
+            this.loadTemp();
+            this.snackBar.open('Template Deleted Successfully', '', {
+                duration: 2000,
+            });
+        }, (err) => {
+            console.log(err);
+            this.snackBar.open(err.message, '', {
+                duration: 2000,
+            });
+        });
     }
 
     tempDataTrack(index, data) {

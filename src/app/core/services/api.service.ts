@@ -681,46 +681,46 @@ export class ApiService {
                 return Observable.throw(error || 'Server error');
             });
     }
-    // // *** Email template service functions ***
-    // getTemplate(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + 'template/get/1/20')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // updateTemplate(body: any, id: string): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + 'template/update/' + id, body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // deleteTemplate(id: string): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.delete(environment['apibase'] + 'template/delete/' + id)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    // *** Email template service functions ***
+    getTemplate(): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + 'template/get/1/20'))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    updateTemplate(body: any, id: string): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.put(this.updateUrl(environment['apibase'] + 'template/update/' + id), body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    deleteTemplate(id: string): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.delete(this.updateUrl(environment['apibase'] + 'template/delete/' + id))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // getCandidateHistory(Email_id: string): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.get(environment['apibase'] + `email/inbox/${Email_id}`)

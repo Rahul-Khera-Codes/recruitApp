@@ -1,5 +1,95 @@
-:host {
-	.mat-form-field {
-		width: 100%;
-	}
+$linkcolor: rgb(0, 188, 212);
+$white: #fff;
+$red: #ff0000;
+.login-card {
+    padding: 10px;
+    max-width: 377px;
+    margin: 0 auto;
+    mat-card-title {
+        h4 {
+            font-weight: bold;
+        }
+    }
+}
+
+.width-100 {
+    width: 100%;
+}
+
+mat-card-actions {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.outerbody {
+	background-color: #2e3e4e;
+	height: 100vh;
+    .logo {
+		display: flex;		
+        img {
+            padding-top: 5%;
+            padding-bottom: 2%;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 480px) and (orientation: portrait) {
+    .outerbody {
+        .logo {
+            img {
+                padding-top: 10%;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 320px) and (orientation: landscape) {}
+
+.forpas {
+    margin-left: 28%;
+    font-size: 15px;
+    text-decoration: none;
+    color: $linkcolor;
+}
+
+.hav-acc {
+    color: $white;
+    margin-left: 15%;
+    font-size: 15px;
+}
+
+.signup {
+    text-decoration: none;
+    color: $linkcolor;
+}
+
+.spin {
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+}
+
+.error {
+    color: $red;
+    text-align: center;
+}
+
+img.facebook {
+    width: 24px;
+    height: 24px;
+}
+
+.fbLogin {
+    margin-bottom: 0px !important;
+}
+
+.fbLogin button {
+    background: #29487d;
+    color: white;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
 }
