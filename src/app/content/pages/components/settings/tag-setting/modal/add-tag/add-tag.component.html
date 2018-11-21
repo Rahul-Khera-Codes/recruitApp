@@ -1,0 +1,108 @@
+<div class="m-content">
+	<div class="editTag">
+		<h3>Add Tag</h3>
+	</div>
+	<form #addForm="ngForm" id="add_tag" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+		<span class="text-err" *ngIf="showMessage">{{message}}</span>
+		<div class="m-portlet__body">
+			<div class="form-group m-form__group row">
+				<div class="col-lg-6 save">
+					<label for="exampleInputEmail1">Title</label>
+					<input type="email" matInput name="title" id='title' placeholder="Title" ngModel required class="form-control m-input m-input--air" aria-describedby="emailHelp" placeholder="Enter Title">
+					<mat-error></mat-error>
+				</div>
+				<div class="col-md-6 col-sm-12" class="radioButton save">
+					<mat-radio-group class="pos-radio width-100" name="type" [(ngModel)]="type" ngModel required>
+						<label class="m-radio m-radio--state-success" *ngIf="addTagType == 'manual'">
+							<input type="radio" *ngIf="addTagType == 'manual'" name="type" value="Manual" (click)="types = 0">Manual Tag
+							<span></span>
+						</label>
+						<label class="m-radio m-radio--state-success" *ngIf="addTagType == 'automatic'">
+							<input type="radio" *ngIf="addTagType == 'automatic'" name="type" value="Automatic" (click)="types = 1">Automatic Tag
+							<span></span>
+						</label>
+						<label class="m-radio m-radio--state-success" *ngIf="addTagType == 'jobProfile'">
+							<input type="radio" *ngIf="addTagType == 'jobProfile'" name="type" value="Automatic" (click)="types = 1">Create Job Profile
+							<span></span>
+						</label>
+						<mat-radio-button *ngIf="addTagType == 'jobProfile'" name="type" value="Automatic" (click)="types = 1">Create Job Profile</mat-radio-button>
+					</mat-radio-group>
+				</div>
+				<div class="col-lg-6 save">
+					<label for="exampleInputEmail1">Email</label>
+					<input type="email" class="form-control m-input m-input--air" matInput name="email" type="email" id="Email" placeholder="Email" ngModel>
+					<mat-error></mat-error>
+				</div>
+				<div class="col-lg-6 save">
+					<label for="exampleInputEmail1">Subject</label>
+					<input type="email" class="form-control m-input m-input--air" matInput name="subject" id="subject" placeholder="Subject" ngModel required aria-describedby="emailHelp">
+				</div>
+				<div class="col-lg-6 save">
+					<label for="exampleInputEmail1">To Date</label>
+					<input class="form-control m-input" matInput name="from" type="date" id="fromDate" placeholder="From date" ngModel>
+				</div>
+				<div class="col-lg-6 save">
+					<label for="exampleInputEmail1">From Date</label>
+					<input class="form-control m-input" matInput name="to" type="date" id="toDate" placeholder="To date" ngModel>
+				</div>
+			</div>
+			<div id="tagDescription" class="col-md-6 col-sm-12" *ngIf="addTagType == 'jobProfile'">
+				<mat-form-field class="width-100">
+					<textarea matInput rows="4" name="job_description" type="textarea" placeholder="Job Description" ngModel required></textarea>
+					<mat-error>Job Description Is Required</mat-error>
+				</mat-form-field>
+			</div>
+			<div id="candidateProfile" class="col-md-6 col-sm-12" *ngIf="addTagType == 'jobProfile'">
+				<mat-form-field class="width-100">
+					<textarea matInput rows="4" name="candidate_profile" type="textarea" placeholder="Candidate Profile" ngModel required></textarea>
+					<mat-error>Candidate Profile Is Required</mat-error>
+				</mat-form-field>
+			</div>
+			<div id="educationDetails" class="col-md-6 col-sm-12" *ngIf="addTagType == 'jobProfile'">
+				<mat-form-field class="width-100">
+					<textarea matInput rows="4" name="education_profile" type="textarea" placeholder="Education Details" ngModel required></textarea>
+					<mat-error>Education Details Is Required</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="form-group m-form__group row">
+			<div class="col-md-6 col-sm-12">
+				<mat-select class="width-100" id="template" placeholder="Select Template" name="template_id" ngModel>
+					<mat-option>
+						None
+					</mat-option>
+					<mat-option *ngFor="let temp of tempList; trackBy: tempListTrack;" [value]="temp.id">
+						{{temp.templateName}}
+					</mat-option>
+				</mat-select>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<mat-slide-toggle name="is_email_send" ngModel class="width-100" id="send_email">Send Automatic Template</mat-slide-toggle>
+				<mat-slide-toggle name="assign" ngModel class="width-100" id="assign">Assign to all existing mails</mat-slide-toggle>
+			</div>
+		</div>
+		<div class="form-group m-form__group row">
+			<div class="col-md-12 col-sm-12">
+				<label for="example-color-input">Tag Color</label>
+				<input class="form-control m-input" name="color" type="color" value="#563d7c" id="example-color-input" ngModel>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12" *ngIf="addTagType == 'jobProfile'">
+			<mat-form-field class="chip-list">
+				<mat-chip-list #chipList>
+					<mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (remove)="remove(tag)">
+						{{tag}}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input placeholder="Keywords" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+				</mat-chip-list>
+			</mat-form-field>
+		</div>
+		<div id="tagBtn" class="col-md-12 col-sm-12 tagButn">
+			<button mat-raised-button id="close" class="savebtn" (click)="close()">Close</button>
+			<button mat-raised-button id="save" color=primary class="savebtn" [disabled]="addForm.invalid || showloading" (click)="addTag(addForm)">
+				Save
+			</button>
+		</div>
+	</form>
+</div>

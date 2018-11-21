@@ -87,7 +87,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Tag Setting',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/tag-setting'
 				},
 				{
 					title: 'Job Profile',
