@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from "@angular/material/icon";
 import { SettingsComponent } from './settings.component';
 import { ImapServerComponent } from './imap-server/imap-server.component';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatCardSubtitle } from '@angular/material/card';
 import { ImapComponentFormComponent } from './imap-component-form/imap-component-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,9 +17,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { SlackInfoComponent } from './slack-info/slack-info.component';
 import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
 import { EmailTemplatesComponent } from './email-templates/email-templates.component'
+import { TagSettingComponent } from './tag-setting/tag-setting.component';
+import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
+import { AddTagComponent } from './tag-setting/modal/add-tag/add-tag.component';
+import { PartialsModule } from '../../../partials/partials.module';
+import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
 @NgModule({
 	imports: [
-		CommonModule,
+
 		MatIconModule,
 		MatCardModule,
 		FormsModule,
@@ -29,6 +34,22 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		MatInputModule,
 		MatRadioModule,
 		MatButtonModule,
+		MatDialogModule,
+		MatProgressSpinnerModule,
+		PartialsModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSelectModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		MatIconModule,
+		MatInputModule,
+		MatSlideToggleModule,
+		ReactiveFormsModule,
+		MatChipsModule,
+		FormsModule,
+		MatCardModule,
+		CommonModule,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -46,12 +67,21 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 					}, {
 						path: 'emailTemplate',
 						component: EmailTemplatesComponent
+					},
+					{
+						path: 'tag-setting',
+						component: TagSettingComponent
 					}
+
 				]
 			}
 		])
 	],
 	providers: [],
+	entryComponents: [
+		AddTagComponent,
+		ManualTagComponent
+	],
 	declarations: [
 		ImapComponentFormComponent,
 		SettingsComponent,
@@ -60,7 +90,10 @@ import { EmailTemplatesComponent } from './email-templates/email-templates.compo
 		SmtpComponentFormComponent,
 		SlackInfoComponent,
 		SlackComponentFormComponent,
-		EmailTemplatesComponent
+		EmailTemplatesComponent,
+		TagSettingComponent,
+		AddTagComponent,
+		ManualTagComponent
 	]
 })
 export class SettingsModule { }
