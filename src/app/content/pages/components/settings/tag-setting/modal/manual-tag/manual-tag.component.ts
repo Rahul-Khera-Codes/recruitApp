@@ -10,15 +10,15 @@ import { NgForm, FormControl, Validators } from '@angular/forms';
 })
 export class ManualTagComponent implements OnInit {
   tag: any;
-  originalcolor = '#e67e22';
-  originaltitle = '';
+  originalColor = '';
+  originalTitle = '';
   constructor(public dialogRef: MatDialogRef<any>, private tagupdate: ApiService) { }
 
   ngOnInit() {
   }
   save() {
-    this.tag.title = this.originaltitle;
-    this.tag.color = this.originalcolor;
+    this.tag.title = this.originalTitle;
+    this.tag.color = this.originalColor;
     this.tagupdate.updateTag(this.tag, this.tag.type).subscribe((data) => {
         this.dialogRef.close('saved');
     }, (err) => {
