@@ -32,7 +32,6 @@ export class TagSettingComponent implements OnInit {
   getAllTag() {
     this._apiService.getAllTags()
       .subscribe((data) => {
-        console.log(data);
         this.formatTagsInArray(data);
         this.loading = false;
       }, (err) => {

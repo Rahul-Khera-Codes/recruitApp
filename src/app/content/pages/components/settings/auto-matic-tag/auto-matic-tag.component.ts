@@ -17,9 +17,7 @@ export class AutoMaticTagComponent implements OnInit {
     originalcolor = '';
     originaltitle = '';
     temp_id: any;
-    // availableColors = color_list;
     tags = [];
-    // separatorKeysCodes = [ENTER, COMMA];
     visible = true;
     selectable = true;
     removable = true;
@@ -64,8 +62,6 @@ export class AutoMaticTagComponent implements OnInit {
         if (index >= 0) {
             this.tags.splice(index, 1);
         }
-        console.log(index);
-
     }
 
     save() {

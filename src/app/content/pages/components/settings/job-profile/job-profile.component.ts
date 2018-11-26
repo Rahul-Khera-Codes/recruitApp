@@ -26,9 +26,6 @@ export class JobProfileComponent implements OnInit {
     public _localStorageService: LocalStorageService,
     private router: Router,
   ) {
-    // dragulaService.drop.subscribe((value) => {
-    //     this.onDrop(value.slice(1));
-    // });
   }
 
   onDrop(args) {
@@ -37,9 +34,7 @@ export class JobProfileComponent implements OnInit {
       apiData.push({ 'id': value['id'], 'priority': (key + 1) })
     })
     this.getTags.updatePriority(apiData).subscribe((res) => {
-      console.log(res)
     }, (err) => {
-      console.log(err)
     })
   }
 
@@ -52,7 +47,6 @@ export class JobProfileComponent implements OnInit {
     this.getTags.getTemplate().subscribe((data) => {
       this.tempList = data;
     }, (err) => {
-      console.log(err);
     });
   }
   getAllTag() {
@@ -60,7 +54,6 @@ export class JobProfileComponent implements OnInit {
       .subscribe((data) => {
         this.formatTagsInArray(data);
       }, (err) => {
-        console.log(err);
         this.loading = false;
       });
   }
@@ -74,11 +67,9 @@ export class JobProfileComponent implements OnInit {
           this.refreshAllTags();
         }, (err) => {
           this.loading = false;
-          console.log(err);
         });
       }
     }, (err) => {
-      console.log(err);
     });
   }
 
