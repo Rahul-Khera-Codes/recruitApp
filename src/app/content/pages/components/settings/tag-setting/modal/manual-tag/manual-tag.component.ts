@@ -18,7 +18,8 @@ export class ManualTagComponent implements OnInit {
   }
   save() {
     this.tag.title = this.originalTitle;
-    this.tag.color = this.originalColor;
+    this.originalColor=this.tag.color
+    console.log( this.originalColor);
     this.tagupdate.updateTag(this.tag, this.tag.type).subscribe((data) => {
         this.dialogRef.close('saved');
     }, (err) => {

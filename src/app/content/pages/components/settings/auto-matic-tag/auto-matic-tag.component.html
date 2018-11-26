@@ -1,0 +1,112 @@
+<!-- <h3 class="heading" *ngIf="tag.active_status">
+	Edit Tag</h3>
+<h4 class="heading" *ngIf="!tag.active_status">{{tag.title}} Tag
+	<button mat-raised-button class="closeBtn" (click)="close()" mat-mini-fab>
+		<mat-icon class="icon">close</mat-icon>
+	</button>
+</h4>
+<hr> -->
+<div mat-dialog-content>
+	<div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
+		<div class="m-portlet__head header">
+			<div class="m-portlet__head-progress">
+
+				<!-- here can place a progress bar-->
+			</div>
+			<div class="m-portlet__head-wrapper">
+				<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<span class="m-portlet__head-icon">
+							<i class="flaticon-map-location"></i>
+						</span>
+						<h3 class="m-portlet__head-text">
+							Edit Tag
+						</h3>
+					</div>
+				</div>
+				<div class="m-portlet__head-tools">
+					<a href="#" (click)="close()" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+						<span>
+							<i class="la la-arrow-left"></i>
+							<span>Back</span>
+						</span>
+					</a>
+					<div class="btn-group">
+						<button type="button" class="btn btn-brand  m-btn m-btn--icon m-btn--wide m-btn--md" [disabled]="!tag.job_description.length || !tag.candidate_profile || !tag.education_profile" (click)="save()">
+							<span>
+								<i class="la la-check"></i>
+								<span>Save</span>
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid edit-tag toggle" *ngIf="tag.active_status">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">Title:</label>
+					<input placeholder="Title" class="form-control m-input" disabled [(ngModel)]="originaltitle">
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">Email:</label>
+					<input placeholder="Email" class="form-control m-input" [(ngModel)]="tag.email">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">Subject:</label>
+					<input placeholder="Subject" class="form-control m-input" [(ngModel)]="tag.subject">
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-3 col-form-label">From date:</label>
+					<input placeholder="From date" class="form-control m-input" type="date" [(ngModel)]="tag.from">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">To date:</label>
+					<input placeholder="To date" class="form-control m-input" type="date" [(ngModel)]="tag.to">
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">Job Description:</label>
+					<textarea rows="4" placeholder="Job Description" class="form-control m-input" [value]="tag.job_description" [(ngModel)]="tag.job_description" required></textarea>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">Candidate Profile:</label>
+					<textarea rows="4" placeholder="Candidate Profile" class="form-control m-input" [value]="tag.candidate_profile" [(ngModel)]="tag.candidate_profile" required></textarea>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label">education_profile:</label>
+					<textarea rows="4" [value]="education_profile" class="form-control m-input" placeholder="Education Details" [(ngModel)]="tag.education_profile" required></textarea>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label class="col-lg-2 col-form-label"></label>
+					<mat-slide-toggle [checked]="tag.is_email_send" class="toggle" name="is_email_send" style="width: 100%;padding-top:18px;" [(ngModel)]="tag.is_email_send">Send Automatic Template</mat-slide-toggle>
+					<mat-slide-toggle [(ngModel)]="tag.assign_to_all_emails" class="toggle" [checked]="tag.assign_to_all_emails" [ngClass]="{'toggle-green':tag.assign_to_all_emails}" name="assign" style="width: 100%">Assign to all existing mails</mat-slide-toggle>
+				</div>
+
+			</div>
+			<div class="row ">
+				<div class="col-md-6 col-sm-12 tagColor">
+					<label class="col-lg-4 col-form-label">Select Template</label>
+					<select class="form-control m-input m-input--square" id="exampleSelect1" [(ngModel)]="temp_id" name="template_id" ngModel style="width: 100%; padding-top:15px;">
+						<option *ngFor="let temp of tempList" [value]="temp.id">{{temp.templateName}}</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-sm-12 tagColor ">
+					<label for="example-color-input" class="tagColor">Tag Color</label>
+					<input class="form-control m-input toggle" name="color" class="form-control m-input" [(ngModel)]="tag.color" type="color" id="example-color-input">
+				</div>
+			</div>
+		</div>
+		<div *ngIf="!tag.active_status" class="padd24">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<mat-slide-toggle [checked]="tagStatus" (change)="enableJobtag(tagStatus)" name="tagStatus" [(ngModel)]="tagStatus">Reopen {{tag.title}} Tag</mat-slide-toggle>
+				</div>
+			</div>
+		</div>

@@ -2,212 +2,236 @@
 
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .mat-table__wrapper {
-    width: 100%;
-    overflow-x: auto;
-    mat-cell,
-    mat-header-cell {
-        min-height: 100%;
-    }
+	width: 100%;
+	overflow-x: auto;
+	mat-cell,
+	mat-header-cell {
+		min-height: 100%;
+	}
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: #9388fa !important;
+	color: #9388fa !important;
 }
-.mat-form-field-appearance-outline .mat-form-field-outline-start{ 
-	border:none!important;
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+	border: none !important;
 }
-.mat-form-field-appearance-outline .mat-form-field-outline-end, .mat-form-field-appearance-outline .mat-form-field-outline-start{
-	border:none!important;
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+	border: none !important;
 }
+
 .mat-table__wrapper .mat-table {
-    min-width: 1000px;
-    width: 100%;
+	min-width: 1000px;
+	width: 100%;
 }
-.mat-form-field-appearance-outline .mat-form-field-flex{
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
 	border: 1px solid #b7b0ff;
 	border-radius: 50px;
 	width: 95%;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
-	padding:0.3em 0 1em 0 !important;
-
+	padding: 0.3em 0 1em 0 !important;
 }
 
-
 .mat-table__wrapper--dashboard .mat-table {
-    min-width: 600px !important;
+	min-width: 600px !important;
 }
 
 .mat-table__wrapper .mat-table .email-cell {
-    word-wrap: normal;
-    width: 180px;
-    flex: auto;
+	word-wrap: normal;
+	width: 180px;
+	flex: auto;
 }
 
 .m-mat-dialog-container__wrapper .mat-dialog-container {
-    padding: 0;
-    overflow-x: hidden;
-    .m-portlet {
-        margin-bottom: 0;
-    }
-    .alert {
-        border-radius: 0 !important;
-        width: 1032px;
-    }
+	padding: 0;
+	overflow-x: hidden;
+	.m-portlet {
+		margin-bottom: 0;
+	}
+	.alert {
+		border-radius: 0 !important;
+		width: 1032px;
+	}
 }
 
 .mat-table__wrapper--sub .mat-table {
-    min-width: 400px;
-    .mat-cell:last-child {
-        flex: 0 0 100px;
-    }
-    .mat-header-cell:last-child {
-        flex: 0 0 100px;
-    }
+	min-width: 400px;
+	.mat-cell:last-child {
+		flex: 0 0 100px;
+	}
+	.mat-header-cell:last-child {
+		flex: 0 0 100px;
+	}
 }
 
 .ml-auto {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .example-full-width {
-    width: 100%;
+	width: 100%;
 }
 
 mat-radio-button {
-    padding-right: 16px;
+	padding-right: 16px;
 }
 
 .m-form--alert {
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .mat-column-checkbox {
-    flex: 0 0 68px;
+	flex: 0 0 68px;
 }
 
 .mat-column-id {
-    flex: 0 0 68px;
+	flex: 0 0 68px;
 }
 
 .mat-column-main {
-    flex: 0 0 568px;
+	flex: 0 0 568px;
 }
 
 .mat-column-actions {
-    flex: 0 0 160px;
+	flex: 0 0 160px;
 }
 
 .mat-table__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 .mat-column-vinCode {
-    flex: 0 0 170px;
+	flex: 0 0 170px;
 }
 
 .m-portlet-mx-0 {
-    margin: -1.1rem -2.2rem 0;
-    overflow-x: hidden;
+	margin: -1.1rem -2.2rem 0;
+	overflow-x: hidden;
 }
 
 .mat-table__wrapper .mat-table .mat-row-editing.mat-row-inactive {
-    height: 0;
-    min-height: 0;
-    padding: 0 !important;
-    border-bottom: 0 !important;
+	height: 0;
+	min-height: 0;
+	padding: 0 !important;
+	border-bottom: 0 !important;
 }
 
-
-
 .cardsub {
-    color: inherit;
-    font-size: 18px;
+	color: inherit;
+	font-size: 18px;
 }
 
 table.list {
-    width: 100%;
-    tr,
-    th {
-        // text-align: center;
-        // border-bottom: 1px solid $tablistcolor;
-        padding: 5px 10px 5px 0px;
-        vertical-align: middle;
-    }
+	width: 100%;
+	tr,
+	th {
+		// text-align: center;
+		// border-bottom: 1px solid $tablistcolor;
+		padding: 5px 10px 5px 0px;
+		vertical-align: middle;
+	}
 }
 
 .table td {
-    padding: .75rem .75rem .75rem 0px;
+	padding: .75rem .75rem .75rem 0px;
 }
 
 .off {
-    color: red;
-    cursor: pointer;
+	color: red;
+	cursor: pointer;
 }
 
 .on {
-    color: green;
-    cursor: pointer;
+	color: green;
+	cursor: pointer;
 }
 
 .badges {
-    background-color: #554ebd;
-    border-radius: 50px;
-    color: white;
-    padding: 5px 10px;
-    font-weight: 500;
+	background-color: #554ebd;
+	border-radius: 50px;
+	color: white;
+	padding: 5px 10px;
+	font-weight: 500;
 }
 
 .mainform {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .note {
-    font-weight: bold;
-    font-style: italic;
-    color: red;
-    font-size: 10px;
+	font-weight: bold;
+	font-style: italic;
+	color: red;
+	font-size: 10px;
 }
 
 .fetch-till {
-    font-size: 10px;
+	font-size: 10px;
 }
 
 td,
 th {
-    vertical-align: middle !important;
+	vertical-align: middle !important;
 }
 
 .alignCenter {
-    text-align: center;
+	text-align: center;
 }
 
 .mt-20 {
-    margin-top: 20px;
+	margin-top: 20px;
 }
-.font500{
-    font-weight: 500;
+
+.font500 {
+	font-weight: 500;
 }
+
 .chartcolor {
-    color: #ff5d7e;
+	color: #ff5d7e;
 }
-.tableStrip{
-    background: #efefef;
+
+.tableStrip {
+	background: #efefef;
 }
-.pl-2{
-    padding-left: 2px;
+
+.pl-2 {
+	padding-left: 2px;
 }
-.font-color{
-  color: #9388fa;
+
+.font-color {
+	color: #9388fa;
 }
 
 .mat-radio-outer-circle {
-    border-color: rgb(242, 243, 248) !important;
-    opacity: 0.6;
+	border-color: rgb(242, 243, 248) !important;
+	opacity: 0.6;
 }
+
 .mat-radio-button.mat-accent .mat-radio-inner-circle {
-    background-color: #fdfdff !important;
+	background-color: #fdfdff !important;
 }
+
+m-add-tag {
+	.mat-form-field .mat-form-field-label {
+		color: #f4516c;
+		font-size: 14px;
+	}
+
+	.mat-form-field-appearance-legacy .mat-form-field-underline {
+		display: none;
+	}
+
+	.mat-keywords .mat-form-field-infix {
+		padding: 0;
+		border: 0;
+	}
+}
+
