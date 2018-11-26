@@ -21,7 +21,7 @@
 					</div>
 					<div class="m-portlet__head-tools">
 						<div class="btn-group">
-							<button type="button" class="btn btn-brand  m-btn m-btn--icon m-btn--wide m-btn--md" (click)="backClicked()">
+							<button type="button" class="btn btn-brand  m-btn m-btn--icon m-btn--wide m-btn--md closeBtn" (click)="backClicked()">
 								<span>
 									<span>Back</span>
 								</span>
@@ -51,17 +51,20 @@
 										<input type="email" class="form-control m-input" name="title" id='title' placeholder="Title" ngModel required>
 										<span class="m-form__help">Please enter title</span>
 									</div>
-									<div class="m-radio-inline">
+									<div class="m-radio-inline col-md-5">
+										<label class="col-lg-5 col-form-label radio" *ngIf="addTagType == 'manual'">Manual Tag:</label>
+										<label class="col-lg-5 col-form-label radio" *ngIf="addTagType == 'Automatic'">Automatic Tag:</label>
+										<label class="col-lg-5 col-form-label radio" *ngIf="addTagType == 'jobProfile'">Create Job Profile:</label>
 										<label class="m-radio m-radio--solid m-radio--brand" *ngIf="addTagType == 'manual'" name="type" [(ngModel)]="type" ngModel required>
-											<input type="radio" *ngIf="addTagType == 'manual'" name="type" value="Manual" (click)="types = 0">Manual Tag
+											<input type="radio" *ngIf="addTagType == 'manual'" name="type" value="Manual" (click)="types = 0">
 											<span></span>
 										</label>
 										<label class="m-radio m-radio--solid m-radio--brand" *ngIf="addTagType == 'Automatic'" name="type" [(ngModel)]="type" ngModel required>
-											<input type="radio" *ngIf="addTagType == 'Automatic'" name="type" value="Automatic" (click)="types = 0">Automatic Tag
+											<input type="radio" *ngIf="addTagType == 'Automatic'" name="type" value="Automatic" (click)="types = 0">
 											<span></span>
 										</label>
 										<label class="m-radio m-radio--solid m-radio--brand" *ngIf="addTagType == 'jobProfile'" name="type" [(ngModel)]="type" ngModel required>
-											<input type="radio" *ngIf="addTagType == 'jobProfile'" name="type" value="Automatic" (click)="types = 0">Create Job Profile
+											<input type="radio" *ngIf="addTagType == 'jobProfile'" name="type" value="Automatic" (click)="types = 0">
 											<span></span>
 										</label>
 									</div>
