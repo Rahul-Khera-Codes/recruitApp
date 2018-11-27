@@ -170,19 +170,9 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getUserList(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `user/list/${body.page}/${body.limit}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async getUserList(body) {
+        return await this.http.get(this.updateUrl(`${this.API_URL}/user/list/${body.page}/${body.limit}`)).toPromise();
+    }
     // getSpamList(body): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.get(environment['apibase'] + `spamList/get/${body.page}/${body.limit}`)
@@ -423,7 +413,7 @@ export class ApiService {
     // }
     updateTag(tag: any, type: string): Observable<any> {
         this.increaseAPiCount();
-        return this.http.put(this.updateUrl(environment['apibase'] + 'tag/update/' + type+'/'+ tag.id), tag)
+        return this.http.put(this.updateUrl(environment['apibase'] + 'tag/update/' + type + '/' + tag.id), tag)
             .map((res: Response) => {
                 this.decreaseAPiCount();
                 return res;
@@ -436,7 +426,7 @@ export class ApiService {
     }
     deleteTag(tag: string, type: string): Observable<any> {
         this.increaseAPiCount();
-        return this.http.delete(this.updateUrl(environment['apibase'] + 'tag/delete/' + type+'/'+ tag))
+        return this.http.delete(this.updateUrl(environment['apibase'] + 'tag/delete/' + type + '/' + tag))
             .map((res: Response) => {
                 this.decreaseAPiCount();
                 return res;

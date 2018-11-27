@@ -1,0 +1,8 @@
+.user-list-table {
+  width: 100%;
+}
+
+.user-list-table .mat-icon {
+  color: red;
+  cursor: pointer;
+}

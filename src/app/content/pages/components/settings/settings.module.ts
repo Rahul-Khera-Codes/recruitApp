@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginato
 import { AddTagComponent } from './tag-setting/modal/add-tag/add-tag.component';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
+import { UserListComponent } from './user-list/user-list.component';
 @NgModule({
 	imports: [
 
@@ -71,6 +72,10 @@ import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.co
 					{
 						path: 'tag-setting',
 						component: TagSettingComponent
+					},
+					{
+						path: 'user-list',
+						component: UserListComponent
 					}
 
 				]
@@ -93,7 +98,8 @@ import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.co
 		EmailTemplatesComponent,
 		TagSettingComponent,
 		AddTagComponent,
-		ManualTagComponent
+		ManualTagComponent,
+		UserListComponent
 	]
 })
 export class SettingsModule { }
