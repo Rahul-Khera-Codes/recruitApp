@@ -19,9 +19,12 @@ import { SlackComponentFormComponent } from './slack-component-form/slack-compon
 import { EmailTemplatesComponent } from './email-templates/email-templates.component'
 import { TagSettingComponent } from './tag-setting/tag-setting.component';
 import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
-import { AddTagComponent } from './tag-setting/modal/add-tag/add-tag.component';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
+import { JobProfileComponent } from './job-profile/job-profile.component';
+import { ConfirmationDialogComponent } from './model/confirmation-dialog.component';
+import { AddTagComponent } from './add-tag/add-tag.component';
+import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
 @NgModule({
 	imports: [
 
@@ -71,6 +74,18 @@ import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.co
 					{
 						path: 'tag-setting',
 						component: TagSettingComponent
+					},
+					{
+						path: 'job-profile',
+						component: JobProfileComponent
+					},
+					{
+						path: 'add-tag',
+						component:AddTagComponent
+					},
+					{
+						path: 'auto-matic-tag',
+						component:AutoMaticTagComponent
 					}
 
 				]
@@ -79,8 +94,8 @@ import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.co
 	],
 	providers: [],
 	entryComponents: [
-		AddTagComponent,
-		ManualTagComponent
+		ManualTagComponent,
+		ConfirmationDialogComponent
 	],
 	declarations: [
 		ImapComponentFormComponent,
@@ -93,7 +108,11 @@ import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.co
 		EmailTemplatesComponent,
 		TagSettingComponent,
 		AddTagComponent,
-		ManualTagComponent
+		ManualTagComponent,
+		JobProfileComponent,
+		AutoMaticTagComponent,
+		ConfirmationDialogComponent,
+		AddTagComponent
 	]
 })
 export class SettingsModule { }

@@ -2,8 +2,8 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
 import { ApiService } from '../../../../../core/services/api.service';
-import { AddTagComponent } from './modal/add-tag/add-tag.component';
 import { ManualTagComponent } from './modal/manual-tag/manual-tag.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'm-tag-setting',
@@ -15,7 +15,7 @@ export class TagSettingComponent implements OnInit {
   loading = false;
   tempList: any;
   tags: any[];
-  constructor(public _apiService: ApiService, public dialog: MatDialog, public viewContainerRef: ViewContainerRef, public snackBar: MatSnackBar) { }
+  constructor(public _apiService: ApiService, private router: Router,public dialog: MatDialog, public viewContainerRef: ViewContainerRef, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loading = true;
@@ -32,7 +32,6 @@ export class TagSettingComponent implements OnInit {
   getAllTag() {
     this._apiService.getAllTags()
       .subscribe((data) => {
-        console.log(data);
         this.formatTagsInArray(data);
         this.loading = false;
       }, (err) => {
@@ -42,9 +41,11 @@ export class TagSettingComponent implements OnInit {
   }
 
   removeTag(id: string, type: string) {
+    this.loading = true;
     this._apiService.deleteTag(id, type)
       .subscribe((data) => {
         this.getAllTag();
+        this.loading = false;
       }, (err) => {
         console.log(err);
       });
@@ -66,22 +67,11 @@ export class TagSettingComponent implements OnInit {
       this.getAllTag();
     });
   }
-
   addTag() {
-    this.dialogRef = this.dialog.open(AddTagComponent, {
-      width: '40vw',
-      data: {}
-    });
-    this.dialogRef.componentInstance.tempList = this.tempList;
-    this.dialogRef.componentInstance.addTagType = 'manual';
-    this.dialogRef.afterClosed().subscribe(result => {
-      if (result === 'Added') {
-        this.dialogRef = null;
-        this.getAllTag();
-      }
-    });
+    localStorage.setItem("tempList", JSON.stringify(this.tempList));
+    localStorage.setItem("addTagType", JSON.stringify('manual'));
+    this.router.navigate(['/settings/add-tag']);
   }
-
 
   formatTagsInArray(data: any) {
     this.tags = [];
