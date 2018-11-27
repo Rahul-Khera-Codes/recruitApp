@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from "@angular/material/icon";
+import { MatIconModule } from '@angular/material/icon';
 import { SettingsComponent } from './settings.component';
 import { ImapServerComponent } from './imap-server/imap-server.component';
 import { MatCardModule, MatCardSubtitle } from '@angular/material/card';
@@ -19,10 +19,13 @@ import { SlackComponentFormComponent } from './slack-component-form/slack-compon
 import { EmailTemplatesComponent } from './email-templates/email-templates.component'
 import { TagSettingComponent } from './tag-setting/tag-setting.component';
 import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
-import { AddTagComponent } from './tag-setting/modal/add-tag/add-tag.component';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { JobProfileComponent } from './job-profile/job-profile.component';
+import { ConfirmationDialogComponent } from './model/confirmation-dialog.component';
+import { AddTagComponent } from './add-tag/add-tag.component';
+import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
 @NgModule({
 	imports: [
 
@@ -76,6 +79,18 @@ import { UserListComponent } from './user-list/user-list.component';
 					{
 						path: 'user-list',
 						component: UserListComponent
+					},
+					{
+						path: 'job-profile',
+						component: JobProfileComponent
+					},
+					{
+						path: 'add-tag',
+						component: AddTagComponent
+					},
+					{
+						path: 'auto-matic-tag',
+						component: AutoMaticTagComponent
 					}
 
 				]
@@ -84,8 +99,8 @@ import { UserListComponent } from './user-list/user-list.component';
 	],
 	providers: [],
 	entryComponents: [
-		AddTagComponent,
-		ManualTagComponent
+		ManualTagComponent,
+		ConfirmationDialogComponent
 	],
 	declarations: [
 		ImapComponentFormComponent,
@@ -99,7 +114,11 @@ import { UserListComponent } from './user-list/user-list.component';
 		TagSettingComponent,
 		AddTagComponent,
 		ManualTagComponent,
-		UserListComponent
+		UserListComponent,
+		JobProfileComponent,
+		AutoMaticTagComponent,
+		ConfirmationDialogComponent,
+		AddTagComponent
 	]
 })
 export class SettingsModule { }

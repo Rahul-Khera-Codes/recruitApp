@@ -1,0 +1,27 @@
+<div class="mainform">
+	<mat-spinner *ngIf="loading" class="m-2" style="display:inline-block" [diameter]='20'></mat-spinner>
+	<mat-card class="background">
+		<mat-card-subtitle class="cardsub heading fontColor">
+			Job Profile
+		</mat-card-subtitle>
+		<mat-card-subtitle id="showError" class="error" *ngIf="showmessage">{{message}}</mat-card-subtitle>
+		<mat-card-content>
+			<div class="row">
+				<div class="m-demo box" data-code-preview="true" data-code-html="true" data-code-js="false">
+					<div class="m-demo__preview  m-demo__preview--btn box">
+						<button type="button" class="btn m-btn--pill btn-shadow" [style.background-color]="tag.color" *ngFor="let tag of tags?.Automatic; trackBy: tagsAutomaticTrack" id="li" [ngClass]="{'disabled':!tag.active_status}">
+							<span class="tags" (click)="openAutomatic(tag)">{{tag.title.charAt(0)}}</span>
+							<span class="tags" (click)="openAutomatic(tag)"> {{tag.title}}</span>
+							<mat-icon class="iconset tag remove" (click)="removeTag(tag.id,'Automatic')">cancel</mat-icon>
+						</button>
+					</div>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+	<div class="pos-add">
+		<button id="AddTag" mat-fab (click)="addTag()">
+			<mat-icon>add</mat-icon>
+		</button>
+	</div>
+</div>

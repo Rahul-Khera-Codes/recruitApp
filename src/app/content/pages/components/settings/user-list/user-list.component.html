@@ -1,3 +1,11 @@
+<div class="w-100 add-user-btn pr-2">
+	<button class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+		<span>
+			<i class="fa fa-plus"></i>
+			<span>User</span>
+		</span>
+	</button>
+</div>
 <div class="mat-elevation-z8">
 	<mat-spinner class="loader" *ngIf="loading"></mat-spinner>
 	<table mat-table matSort [dataSource]="dataSource" matSort class="mat-elevation-z8 user-list-table">
@@ -7,7 +15,7 @@
 			</th>
 			<td mat-cell *matCellDef="let element; let i = index">
 				<span *ngIf="column == 'Sr. No'">{{i}}</span>
-				<span *ngIf="column == 'Action'">
+				<span *ngIf="column == 'Action'" (click)="deleteUser(element)">
 					<mat-icon>delete</mat-icon>
 				</span>
 				{{element[column]}}

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../../../../core/services/api.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { DialogService } from '../../../../../core/services/dialog.service';
 
 @Component({
   selector: 'm-user-list',
@@ -21,11 +22,11 @@ export class UserListComponent implements OnInit {
   ];
   loading = true;
   constructor(
-    public _apiService: ApiService
+    public _apiService: ApiService,
+    private _dialogService: DialogService
   ) { }
 
   ngOnInit() {
-    this.Math = Math;
     this.getUserList();
     this.paginator.page.subscribe(() => {
       this.getUserList();
@@ -57,18 +58,18 @@ export class UserListComponent implements OnInit {
     // });
   }
 
-  deleteUser(userData) {
-    // this._dialogService.openConfirmationBox('Are you sure ?').then((res) => {
-    //   if (res === 'yes') {
-    //     _.pull(this.userList, userData);
-    //     this._imapMailsService.deleteUser('user/delete/', userData.id).subscribe((deleteData) => {
-    //       this.getUserList();
-    //     }, (err) => {
-    //       console.log(err);
-    //     });
-    //   }
-    // }, (err) => {
-    //   console.log(err);
-    // });
+  async deleteUser(userData) {
+    this._dialogService.openConfirmationBox('Are you sure ?').then(async res => {
+      if (res === 'yes') {
+        try {
+          await this._apiService.deleteUser(userData.id);
+          this.getUserList();
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

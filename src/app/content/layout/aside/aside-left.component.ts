@@ -92,7 +92,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Job Profile',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/job-profile'
 				},
 				{
 					title: 'Company Profile',
