@@ -26,6 +26,7 @@ import { JobProfileComponent } from './job-profile/job-profile.component';
 import { ConfirmationDialogComponent } from './model/confirmation-dialog.component';
 import { AddTagComponent } from './add-tag/add-tag.component';
 import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
+import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 @NgModule({
 	imports: [
 
@@ -91,6 +92,10 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 					{
 						path: 'auto-matic-tag',
 						component: AutoMaticTagComponent
+					},
+					{
+						path: 'add-user',
+						component: AddNewUserComponent
 					}
 
 				]
@@ -118,7 +123,8 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 		JobProfileComponent,
 		AutoMaticTagComponent,
 		ConfirmationDialogComponent,
-		AddTagComponent
+		AddTagComponent,
+		AddNewUserComponent
 	]
 })
 export class SettingsModule { }

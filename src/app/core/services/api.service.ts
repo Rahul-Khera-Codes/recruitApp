@@ -309,19 +309,9 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // addUser(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + 'user/add_user', body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async addUser(body: any) {
+        return await this.http.post(this.updateUrl(`${this.API_URL}/user/add_user`), body).toPromise();
+    }
     // sendEmail(body: any): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.post(environment['apibase'] + 'email/sendtomany', body)

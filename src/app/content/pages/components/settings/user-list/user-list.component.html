@@ -1,13 +1,13 @@
 <div class="w-100 add-user-btn pr-2">
-	<button class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+	<button class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" [routerLink]="['/settings/add-user']">
 		<span>
 			<i class="fa fa-plus"></i>
 			<span>User</span>
 		</span>
 	</button>
 </div>
+<mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
 <div class="mat-elevation-z8">
-	<mat-spinner class="loader" *ngIf="loading"></mat-spinner>
 	<table mat-table matSort [dataSource]="dataSource" matSort class="mat-elevation-z8 user-list-table">
 		<ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>
