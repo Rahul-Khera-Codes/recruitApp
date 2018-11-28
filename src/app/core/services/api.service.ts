@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { config } from '../../config/config';
 
 @Injectable({
     providedIn: 'root'
@@ -1439,45 +1440,15 @@ export class ApiService {
     //         });
     // }
 
-    // getCompanyProfile(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `tag/getCompanyProfile/${config.companyProfileId}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async getCompanyProfile() {
+        return await this.http.get(this.updateUrl(`${this.API_URL}/tag/getCompanyProfile/${config.companyProfileId}`)).toPromise();
+    }
 
-    // addCompanyProfile(apiData): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + `tag/addCompanyProfile`, apiData)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async addCompanyProfile(apiData) {
+        return await this.http.post(this.updateUrl(`${this.API_URL}/tag/addCompanyProfile`), apiData).toPromise();
+    }
 
-    // updateCompanyProfile(id, apiData): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + `tag/updateCompanyProfile/${id}`, apiData)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async updateCompanyProfile(id, apiData) {
+        return await this.http.post(this.updateUrl(`${this.API_URL}/tag/updateCompanyProfile/${id}`), apiData).toPromise();
+    }
 }

@@ -18,7 +18,16 @@ import { SlackInfoComponent } from './slack-info/slack-info.component';
 import { SlackComponentFormComponent } from './slack-component-form/slack-component-form.component';
 import { EmailTemplatesComponent } from './email-templates/email-templates.component'
 import { TagSettingComponent } from './tag-setting/tag-setting.component';
-import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
+import {
+	MatProgressSpinnerModule,
+	MatDialogModule,
+	MatSelectModule,
+	MatPaginatorModule,
+	MatTableModule,
+	MatSlideToggle,
+	MatSlideToggleModule,
+	MatChipsModule
+} from '@angular/material';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -27,6 +36,7 @@ import { ConfirmationDialogComponent } from './model/confirmation-dialog.compone
 import { AddTagComponent } from './add-tag/add-tag.component';
 import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 @NgModule({
 	imports: [
 
@@ -96,6 +106,10 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 					{
 						path: 'add-user',
 						component: AddNewUserComponent
+					},
+					{
+						path: 'company-profile',
+						component: CompanyProfileComponent
 					}
 
 				]
@@ -124,7 +138,8 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 		AutoMaticTagComponent,
 		ConfirmationDialogComponent,
 		AddTagComponent,
-		AddNewUserComponent
+		AddNewUserComponent,
+		CompanyProfileComponent
 	]
 })
 export class SettingsModule { }
