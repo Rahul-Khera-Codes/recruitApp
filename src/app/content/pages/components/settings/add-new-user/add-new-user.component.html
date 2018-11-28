@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="m-portlet m-portlet--tab">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <span class="m-portlet__head-icon m--hide">
+                            <i class="la la-gear"></i>
+                        </span>
+                        <h3 class="m-portlet__head-text">
+                            Add New User
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <form class="m-form m-form--fit m-form--label-align-right" id="addUserForm" autoComplete="off" [formGroup]="addNewUserForm">
+                <div class="m-portlet__body">
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control m-input m-input--square" id="add-user-email"
+                            placeholder="Email Id" [formControl]="addNewUserForm.controls['email']">
+                        <!-- <span class="m-form__help">We'll never share your email with anyone else.</span> -->
+                        <mat-error *ngIf="!addNewUserForm.controls['email'].valid && addNewUserForm.controls['email'].touched">
+                            Please enter a valid email
+                        </mat-error>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect1">Select Role</label>
+                        <select class="form-control m-input m-input--square" [formControl]="addNewUserForm.controls['user_type']">
+                            <option *ngFor="let user of userType; trackBy: userTypeTrack" [value]="user">{{ user }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input class="form-control m-input m-input--square" id="add-user-password" placeholder="Password"
+                            type="password" [formControl]="addNewUserForm.controls['password']">
+                        <mat-error *ngIf="!addNewUserForm.controls['password'].valid && addNewUserForm.controls['password'].touched">
+                            Please enter password
+                        </mat-error>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input class="form-control m-input m-input--square" id="add-user-cpassword" placeholder="Confirm Password"
+                            type="password" [formControl]="addNewUserForm.controls['confirm_password']">
+                        <mat-error *ngIf="addNewUserForm.controls['confirm_password'].touched && addNewUserForm.controls['confirm_password'].hasError('notEquivalent')">Password
+                            don't match</mat-error>
+                    </div>
+
+                </div>
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                    <div class="m-form__actions">
+                        <div class="alert alert-danger" role="alert" *ngIf="showmessage">
+                            {{message}}
+                        </div>
+                        <button type="submit" class="btn btn-success mr-2" [disabled]="addNewUserForm.invalid || loading"
+                            (click)="addUser()">
+                            <span *ngIf="!loading">Add User</span>
+                            <mat-spinner class="mx-auto" *ngIf="loading" diameter="16"></mat-spinner>
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+    </div>
+</div>

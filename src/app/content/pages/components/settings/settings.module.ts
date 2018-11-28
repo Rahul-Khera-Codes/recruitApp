@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatIconModule } from "@angular/material/icon";
+import { MatIconModule } from '@angular/material/icon';
 import { SettingsComponent } from './settings.component';
 import { ImapServerComponent } from './imap-server/imap-server.component';
 import { MatCardModule, MatCardSubtitle } from '@angular/material/card';
@@ -21,10 +21,12 @@ import { TagSettingComponent } from './tag-setting/tag-setting.component';
 import { MatProgressSpinnerModule, MatDialogModule, MatSelectModule, MatPaginatorModule, MatTableModule, MatSlideToggle, MatSlideToggleModule, MatChipsModule } from '@angular/material';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
+import { UserListComponent } from './user-list/user-list.component';
 import { JobProfileComponent } from './job-profile/job-profile.component';
 import { ConfirmationDialogComponent } from './model/confirmation-dialog.component';
 import { AddTagComponent } from './add-tag/add-tag.component';
 import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
+import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 @NgModule({
 	imports: [
 
@@ -76,16 +78,24 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 						component: TagSettingComponent
 					},
 					{
+						path: 'user-list',
+						component: UserListComponent
+					},
+					{
 						path: 'job-profile',
 						component: JobProfileComponent
 					},
 					{
 						path: 'add-tag',
-						component:AddTagComponent
+						component: AddTagComponent
 					},
 					{
 						path: 'auto-matic-tag',
-						component:AutoMaticTagComponent
+						component: AutoMaticTagComponent
+					},
+					{
+						path: 'add-user',
+						component: AddNewUserComponent
 					}
 
 				]
@@ -109,10 +119,12 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 		TagSettingComponent,
 		AddTagComponent,
 		ManualTagComponent,
+		UserListComponent,
 		JobProfileComponent,
 		AutoMaticTagComponent,
 		ConfirmationDialogComponent,
-		AddTagComponent
+		AddTagComponent,
+		AddNewUserComponent
 	]
 })
 export class SettingsModule { }
