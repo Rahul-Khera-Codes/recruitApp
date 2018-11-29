@@ -107,7 +107,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Users Log',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/user-activity-log'
 				},
 				{
 					title: 'Email Logs',

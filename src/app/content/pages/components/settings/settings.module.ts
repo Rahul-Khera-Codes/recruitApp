@@ -26,7 +26,10 @@ import {
 	MatTableModule,
 	MatSlideToggle,
 	MatSlideToggleModule,
-	MatChipsModule
+	MatChipsModule,
+	MatGridListModule,
+	MatListModule,
+	MatMenuModule
 } from '@angular/material';
 import { PartialsModule } from '../../../partials/partials.module';
 import { ManualTagComponent } from './tag-setting/modal/manual-tag/manual-tag.component';
@@ -37,6 +40,7 @@ import { AddTagComponent } from './add-tag/add-tag.component';
 import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { UserActivityLogComponent } from './user-activity-log/user-activity-log.component';
 @NgModule({
 	imports: [
 
@@ -65,6 +69,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 		FormsModule,
 		MatCardModule,
 		CommonModule,
+		MatGridListModule,
+		MatMenuModule,
+		MatListModule,
 		RouterModule.forChild([
 			{
 				path: '',
@@ -110,6 +117,10 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 					{
 						path: 'company-profile',
 						component: CompanyProfileComponent
+					},
+					{
+						path: 'user-activity-log',
+						component: UserActivityLogComponent
 					}
 
 				]
@@ -139,7 +150,8 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 		ConfirmationDialogComponent,
 		AddTagComponent,
 		AddNewUserComponent,
-		CompanyProfileComponent
+		CompanyProfileComponent,
+		UserActivityLogComponent
 	]
 })
 export class SettingsModule { }

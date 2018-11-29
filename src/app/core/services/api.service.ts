@@ -457,19 +457,10 @@ export class ApiService {
         return await this.http.delete(this.updateUrl(`${this.API_URL}/user/delete/${id}`)).toPromise();
     }
 
-    // getHistory(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `user/log/${body.email}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async getHistory(body) {
+        return await this.http.get(this.updateUrl(`${this.API_URL}/user/log/${body.email}`)).toPromise();
+    }
+
     getUserVariable(): Observable<any> {
         this.increaseAPiCount();
         return this.http.get(this.updateUrl(environment['apibase'] + 'variable/get/1/20'))
