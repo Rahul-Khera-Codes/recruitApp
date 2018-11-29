@@ -41,6 +41,7 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { UserActivityLogComponent } from './user-activity-log/user-activity-log.component';
+import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.component';
 @NgModule({
 	imports: [
 
@@ -130,7 +131,8 @@ import { UserActivityLogComponent } from './user-activity-log/user-activity-log.
 	providers: [],
 	entryComponents: [
 		ManualTagComponent,
-		ConfirmationDialogComponent
+		ConfirmationDialogComponent,
+		RemoveOldLogsComponent
 	],
 	declarations: [
 		ImapComponentFormComponent,
@@ -151,7 +153,8 @@ import { UserActivityLogComponent } from './user-activity-log/user-activity-log.
 		AddTagComponent,
 		AddNewUserComponent,
 		CompanyProfileComponent,
-		UserActivityLogComponent
+		UserActivityLogComponent,
+		RemoveOldLogsComponent
 	]
 })
 export class SettingsModule { }

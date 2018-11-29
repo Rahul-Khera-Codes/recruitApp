@@ -1339,19 +1339,10 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // removeOldlogs(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.delete(environment['apibase'] + `user/deleteLogs/${body['userId']}/${body['start']}/${body['end']}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async removeOldlogs(body) {
+        return await this.http.delete(this.updateUrl(`${this.API_URL}/user/deleteLogs/${body['userId']}/${body['start']}/${body['end']}`))
+            .toPromise();
+    }
     // getAllTestPaper(): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.get(environment['apibase'] + `exams/getTestPapers`)

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as _ from 'lodash';
 import { ApiService } from '../../../../../core/services/api.service';
-// import { RemoveOldLogsComponent } from './../../modules/remove-old-logs/remove-old-logs.component';
+import { RemoveOldLogsComponent } from '../remove-old-logs/remove-old-logs.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
@@ -93,6 +93,7 @@ export class UserActivityLogComponent implements OnInit {
         this.pageNo = 0;
         this.selectUserLogFullData = [];
         this.selectUserLog = { 'email': logData['email'] };
+        this.loading = true;
     }
 
     usersLogTrack(index, data) {
@@ -104,16 +105,15 @@ export class UserActivityLogComponent implements OnInit {
     }
 
     removeLogs() {
-        // this.dialogRef = this.dialog.open(RemoveOldLogsComponent, {
-        //     height: '60%',
-        //     width: '60%'
-        // });
-        // this.dialogRef.componentInstance.currentUser = this.selectedUserEmail;
-        // this.dialogRef.afterClosed().subscribe(result => {
-        //     if (result === 'close') {
-        //         this.getUserLogs();
-        //     }
-        // });
+        this.dialogRef = this.dialog.open(RemoveOldLogsComponent, {
+            width: '40%'
+        });
+        this.dialogRef.componentInstance.currentUser = this.selectedUserEmail;
+        this.dialogRef.afterClosed().subscribe(result => {
+            if (result === 'close') {
+                this.getUserLogs();
+            }
+        });
 
     }
 

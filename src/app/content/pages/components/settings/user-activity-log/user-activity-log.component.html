@@ -1,4 +1,3 @@
-<mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
 <div class="activity">
   <!-- <span *ngIf="selectUserLog && selectUserLog.email"><b>User Email:</b> {{selectUserLog.email}}</span> -->
   <p class="error" *ngIf="selectUserLog && !selectUserLog.action">{{errorMessage}}</p>
@@ -27,7 +26,7 @@
               </li>
               {{pageNo + 1}}/{{totalPages}}
               <li class="paginate_button page-item next">
-                <button class="page-link" (click)="next()" [disabled]="(pageNo + 1) == totalPages">
+                <button class="page-link" (click)="next()" [disabled]="(pageNo + 1) == totalPages || !selectUserLog.action.length">
                   <i class="la la-angle-right"></i>
                 </button>
               </li>
@@ -66,8 +65,10 @@
           </ul>
         </div>
       </div>
+      <mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
       <div class="m-portlet__body" *ngIf="selectUserLog && selectUserLog.action">
-        <div class="m-scrollable m-scroller ps--active-y">
+        <p *ngIf="!selectUserLog.action.length">No Records</p>
+        <div class="m-scrollable m-scroller ps--active-y" *ngIf="selectUserLog.action.length">
           <div class="m-timeline-2">
             <div class="m-timeline-2__items  m--padding-top-25 m--padding-bottom-30">
               <div class="m-timeline-2__item" *ngFor="let action of selectUserLog.action; let i = index; trackBy: selectUserLogActionTrack;">
