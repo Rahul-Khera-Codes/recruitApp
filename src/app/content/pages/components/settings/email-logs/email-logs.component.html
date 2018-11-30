@@ -1,0 +1,120 @@
+<div class="m-content">
+  <div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h3 class="m-portlet__head-text">
+            Email Logs
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-portlet__body">
+      <!--begin: Search Form -->
+      <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+        <div class="row align-items-center">
+          <div class="col-xl-8 order-2 order-xl-1">
+            <div class="form-group m-form__group row align-items-center">
+              <div class="col-md-4">
+                <div class="m-input-icon m-input-icon--left">
+                  <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                  <span class="m-input-icon__icon m-input-icon__icon--left">
+                    <span><i class="la la-search"></i></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end: Search Form -->
+
+      <!--begin: Datatable -->
+      <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded" id="email-logs">
+        <mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
+        <table *ngIf="emailLogs && emailLogs.length > 0">
+          <thead>
+            <tr>
+              <th>To</th>
+              <th>From</th>
+              <th>Subject</th>
+              <th>User</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let email of emailLogs; trackBy: emailLogsTrack; let even=even;" (click)="previewEmail(email)">
+              <td>{{email.email}}</td>
+              <td>{{email.from}}</td>
+              <td>{{email.subject}}</td>
+              <td>{{email.user}}</td>
+              <td>{{(email.time == 'Invalid date') ? email.time : (email.time | date:
+                'medium')}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
+          <ul class="m-datatable__pager-nav">
+            <li><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled"
+                data-page="1" disabled="disabled"><i class="la la-angle-double-left"></i></a></li>
+            <li><a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev m-datatable__pager-link--disabled"
+                data-page="1" disabled="disabled"><i class="la la-angle-left"></i></a></li>
+            <li style="display: none;"><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-prev"
+                data-page="1"><i class="la la-ellipsis-h"></i></a></li>
+            <li style="display: none;"><input type="text" class="m-pager-input form-control" title="Page number"></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active"
+                data-page="1" title="1">1</a></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="2" title="2">2</a></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="3" title="3">3</a></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="4" title="4">4</a></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="5" title="5">5</a></li>
+            <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="6" title="6">6</a></li>
+            <li><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-next" data-page="7"><i
+                  class="la la-ellipsis-h"></i></a></li>
+            <li><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next" data-page="2"><i class="la la-angle-right"></i></a></li>
+            <li><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last" data-page="35"><i class="la la-angle-double-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!--end: Datatable -->
+    </div>
+  </div>
+</div>
+<!-- <div class="content">
+  <h2><span>Email Logs</span>
+    <div class="search-container">
+      <form>
+        <input type="search" id="search" name="searchTerm" [formControl]="searchInput" placeholder="Search..." />
+        <button type="submit" (click)="search(searchTerm)" class="icon"><i class="material-icons">search</i></button>
+      </form>
+    </div>
+    <div class="pagination">
+      <button [disabled]="page == 1" (click)="previous()"><i class="material-icons">keyboard_arrow_left</i></button>
+      {{page}}/{{totalPages}}
+      <button [disabled]="page == totalPages || totalPages == 0" (click)="next()"><i class="material-icons">keyboard_arrow_right</i></button>
+    </div>
+  </h2>
+  <p class="error" *ngIf="emailLogs && emailLogs.length == 0">No Logs Found</p>
+  <div class="table-responsive">
+    <table class="table" cellspacing="0" cellpadding="0" *ngIf="emailLogs && emailLogs.length > 0">
+      <thead>
+        <tr>
+          <th>To</th>
+          <th>From</th>
+          <th>Subject</th>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let email of emailLogs; trackBy: emailLogsTrack" (click)="previewEmail(email)">
+          <td>{{email.email}}</td>
+          <td>{{email.from}}</td>
+          <td>{{email.subject}}</td>
+          <td>{{email.user}}</td>
+          <td>{{(email.time == 'Invalid date') ? email.time : (email.time | date: 'medium')}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->

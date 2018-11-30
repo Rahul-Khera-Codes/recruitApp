@@ -42,6 +42,7 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { UserActivityLogComponent } from './user-activity-log/user-activity-log.component';
 import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.component';
+import { EmailLogsComponent } from './email-logs/email-logs.component';
 @NgModule({
 	imports: [
 
@@ -122,6 +123,10 @@ import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.compon
 					{
 						path: 'user-activity-log',
 						component: UserActivityLogComponent
+					},
+					{
+						path: 'email-logs',
+						component: EmailLogsComponent
 					}
 
 				]
@@ -154,7 +159,8 @@ import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.compon
 		AddNewUserComponent,
 		CompanyProfileComponent,
 		UserActivityLogComponent,
-		RemoveOldLogsComponent
+		RemoveOldLogsComponent,
+		EmailLogsComponent
 	]
 })
 export class SettingsModule { }

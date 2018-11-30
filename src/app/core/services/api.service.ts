@@ -165,25 +165,15 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getEmailLogs(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     let url: any;
-    //     if (body['email']) {
-    //         url = `search/email/logs/${body.email}/${body.page}/${body.limit}`;
-    //     } else {
-    //         url = `get/email/logs/${body.page}/${body.limit}`;
-    //     }
-    //     return this.http.get(environment['apibase'] + url)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    async getEmailLogs(body) {
+        let url: any;
+        if (body['email']) {
+            url = `search/email/logs/${body.email}/${body.page}/${body.limit}`;
+        } else {
+            url = `get/email/logs/${body.page}/${body.limit}`;
+        }
+        return await this.http.get(this.updateUrl(`${this.API_URL}/${url}`)).toPromise();
+    }
     async getUserList(body) {
         return await this.http.get(this.updateUrl(`${this.API_URL}/user/list/${body.page}/${body.limit}`)).toPromise();
     }
