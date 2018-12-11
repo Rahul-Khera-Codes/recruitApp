@@ -39,7 +39,6 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 			root: true,
 			bullet: 'dot',
 			icon: 'flaticon-email',
-			submenu: []
 		},
 		{
 			title: 'Email Traking',
@@ -101,7 +100,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Users List',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/user-list'
 				},
 				{
 					title: 'Users Log',
@@ -190,10 +190,23 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 						if (subchild['unread']) {
 							subchild['badge'] = { type: 'm-badge--danger', value: subchild['unread'] };
 						}
+						subchild['page'] = `/inbox/${jobProfiles['id']}/${subchild['id']}`
 					});
+					// console.log(jobProfiles['subchild'], "SubChild")
+					
 					jobProfiles['submenu'] = jobProfiles['subchild'];
+
 				});
+				// tag.data.forEach(element => {
+				// 	console.log(element.id, "*************");
+				// 	element.subchild.forEach(subchild => {
+				// 		console.log(subchild.id, "%%%%%%%%%%%%%%%%");
+
+				// 	});
+				// });
+				// console.log(tag.data['id'], "TagData");
 				this.menuList[1]['submenu'] = tag['data'];
+
 			} else {
 				tag['data'].forEach(jobProfiles => {
 					if (jobProfiles['unread']) {
@@ -203,6 +216,7 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				});
 			}
 		});
+		console.log(this.menuList)
 	}
 
 	isMenuItemIsActive(item): boolean {
@@ -234,6 +248,11 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 		return false;
 	}
 
+
+	a(a) {
+		console.log(a);
+
+	}
 	/**
 	 * Use for fixed left aside menu, to show menu on mouseenter event.
 	 * @param e Event
@@ -277,5 +296,9 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				}
 			}, 500);
 		}
+	}
+
+	getEmails(idc) {
+		// this.router.navigate(['inbox'])
 	}
 }

@@ -1,0 +1,97 @@
+.box {
+	border: unset; // background: #eeeeee4a !important;
+	padding: unset;
+}
+
+.tag {
+	float: right;
+	margin-left: 10px;
+	color: white;
+}
+
+.tags {
+	color: white;
+}
+
+// .btn-shadow {
+// 	box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.19) !important;
+// }
+
+.btn-shadow:hover {
+	box-shadow: 0px 5px 10px 2px rgba(88, 103, 221, 0.36) !important;
+}
+
+.email {
+    padding: 5px 10px;
+}
+
+.selected {
+	position: absolute;
+	right: -40em;
+	bottom: 10px;
+	transition: .6s linear;
+	transform: scale(0.6);
+}
+// .selected :not(:last-child){
+// padding: unset;
+// }
+
+// .email:hover {
+// 	box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08)
+// }
+
+.email:hover .selected {
+	right: -32px;
+	transition: .6s linear;
+	margin-bottom: 6px;
+}
+.email:hover .tagButton{
+    font-size: 18px;
+}
+.m-portlet--full-height {
+	overflow: hidden;
+}
+
+.email:hover {
+	box-shadow: 0px 2px 10px 2px rgba(77, 22, 39, 0.12) !important;
+}
+
+.emailBox {
+	padding: 5px 1px 1px 5px;
+	position: relative;
+	transition: .5s;
+    box-shadow: unset;
+    margin-bottom: 0px;
+}
+
+.m-portlet__head-caption {
+	flex: auto;
+	justify-content: space-between;
+}
+
+.select {
+	transform: scale(1.2);
+}
+
+.btn-group {
+	margin-left: 15px;
+}
+
+.alterbutton:hover {
+	display: block
+}
+
+.email:not(:last-child) {
+    border-bottom: 1px solid #f2f2f2;
+}
+.icon{
+	padding: 10px;
+	font-size: 24px;
+}
+.allIcon{
+	margin-bottom: 5px;
+}
+.archive{
+	font-weight: 800;
+	font-size: 20px;
+}

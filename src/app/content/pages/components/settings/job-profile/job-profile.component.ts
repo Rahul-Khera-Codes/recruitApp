@@ -120,7 +120,7 @@ export class JobProfileComponent implements OnInit {
   }
 
   refreshAllTags() {
-    this.getTags.getAllTagsMain().subscribe((res) => {
+    this.getTags.getAllTagsMains().subscribe((res) => {
       this._localStorageService.setItem('allTags', res);
     })
   }

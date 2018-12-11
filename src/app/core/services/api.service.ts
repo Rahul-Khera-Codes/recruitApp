@@ -37,19 +37,19 @@ export class ApiService {
     // fetchNewEmail() {
     //     this.childMethodCall.next();
     // }
-    // refreshNewEmails() {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + 'email/fetchByButton')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    refreshNewEmails() {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + 'email/fetchByButton'))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     increaseAPiCount() {
         ++this.count;
         this.apiStartEvent.emit();
@@ -60,32 +60,45 @@ export class ApiService {
             this.apiEndEvent.emit();
         }
     }
-    // getEmailList(body: any): Observable<any> {
+    // getUserList(body): Observable<any> {
     //     this.increaseAPiCount();
-    //     if (!!body.type) {
-    //         return this.http.put(environment['apibase'] + `email/fetch/${body.tag_id}/${body.page}/${body.limit}`, body)
-    //             .map((res: Response) => {
-    //                 this.decreaseAPiCount();
-    //                 return res;
-    //             })
-    //             .catch((error: any) => {
-    //                 this.count = 0;
-    //                 this.apiEndEvent.emit();
-    //                 return Observable.throw(error || 'Server error');
-    //             });
-    //     } else {
-    //         return this.http.put(environment['apibase'] + `email/fetch/${body.tag_id}/${body.page}/${body.limit}`, body)
-    //             .map((res: Response) => {
-    //                 this.decreaseAPiCount();
-    //                 return res;
-    //             })
-    //             .catch((error: any) => {
-    //                 this.count = 0;
-    //                 this.apiEndEvent.emit();
-    //                 return Observable.throw(error || 'Server error');
-    //             });
-    //     }
+    //     return this.http.put(`${this.updateUrl(environment['apibase'] + `email/fetch/${body.tag_id}/${body.page}/${body.limit}`)}`)
+    //         .map((res: Response) => {
+    //             this.decreaseAPiCount();
+    //             return res;
+    //         })
+    //         .catch((error: any) => {
+    //             this.count = 0;
+    //             this.apiEndEvent.emit();
+    //             return Observable.throw(error || 'Server error');
+    //         });
     // }
+    getEmailList(body: any): Observable<any> {
+        this.increaseAPiCount();
+        if (!!body.type) {
+            return this.http.put(this.updateUrl(environment['apibase'] + `email/fetch/${body.tag_id}/${body.page}/${body.limit}`), body)
+                .map((res: Response) => {
+                    this.decreaseAPiCount();
+                    return res;
+                })
+                .catch((error: any) => {
+                    this.count = 0;
+                    this.apiEndEvent.emit();
+                    return Observable.throw(error || 'Server error');
+                });
+        } else {
+            return this.http.put(this.updateUrl(environment['apibase'] + `email/fetch/${body.tag_id}/${body.page}/${body.limit}`), body)
+                .map((res: Response) => {
+                    this.decreaseAPiCount();
+                    return res;
+                })
+                .catch((error: any) => {
+                    this.count = 0;
+                    this.apiEndEvent.emit();
+                    return Observable.throw(error || 'Server error');
+                });
+        }
+    }
     // sendEmailToPendingCandidates(body: any): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.put(environment['apibase'] + 'email/send_to_selected_tag', body)
@@ -151,19 +164,20 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getScheduleData(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + 'get/shedule')
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+
+    getScheduleData(): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + 'get/shedule'))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // getEmailLogs(body): Observable<any> {
     //     this.increaseAPiCount();
     //     let url: any;
@@ -183,9 +197,22 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
+    getUserList(body): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(`${this.updateUrl(environment['apibase'] + `user/list/${body.page}/${body.limit}`)}`)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // getUserList(body): Observable<any> {
     //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `user/list/${body.page}/${body.limit}`)
+    //     return this.http.get(`${this.updateUrl(environment['apibase'] + `user/list/${body.page}/${body.limit}`))
     //         .map((res: Response) => {
     //             this.decreaseAPiCount();
     //             return res;
@@ -264,10 +291,10 @@ export class ApiService {
     private updateUrl(req: string) {
         return req + '?accessToken=' + localStorage.getItem('accessToken');
     }
-    // async getAllTagsMain() {
-    //     return await this.http.get(this.updateUrl(`${this.API_URL}/email/countEmail`)).toPromise();
-    // }
-    getAllTagsMain(): Observable<any> {
+    async getAllTagsMain() {
+        return await this.http.get(this.updateUrl(`${this.API_URL}/email/countEmail`)).toPromise();
+    }
+    getAllTagsMains(): Observable<any> {
         this.increaseAPiCount();
         return this.http.get(`${this.updateUrl(environment['apibase'] + `email/countEmail`)}`)
             .map((res: Response) => {
@@ -420,32 +447,32 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // assignTag(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + `email/assignMultiple/${body.tag_id}`, body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // deleteEmail(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + `email/deleteEmail/${body.tag_id}`, body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    assignTag(body: any): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.put(environment['apibase'] + `email/assignMultiple/${body.tag_id}`, body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
+    deleteEmail(body: any): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.post(environment['apibase'] + `email/deleteEmail/${body.tag_id}`, body)
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     updateTag(tag: any, type: string): Observable<any> {
         this.increaseAPiCount();
         return this.http.put(this.updateUrl(environment['apibase'] + 'tag/update/' + type + '/' + tag.id), tag)
@@ -906,19 +933,20 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getIntervieweeList(): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `get/Interviewee`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+
+    getIntervieweeList(): Observable<any> {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + `get/Interviewee`))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // assignInterviewee(body): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.post(environment['apibase'] + `assign/interviewee`, body)
@@ -1192,19 +1220,19 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // getStarredMails() {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `star/getStaredEmails`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+    getStarredMails() {
+        this.increaseAPiCount();
+        return this.http.get(this.updateUrl(environment['apibase'] + `star/getStaredEmails`))
+            .map((res: Response) => {
+                this.decreaseAPiCount();
+                return res;
+            })
+            .catch((error: any) => {
+                this.count = 0;
+                this.apiEndEvent.emit();
+                return Observable.throw(error || 'Server error');
+            });
+    }
     // removeOldEmails(body: any): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.put(environment['apibase'] + `tag/remove`, body)

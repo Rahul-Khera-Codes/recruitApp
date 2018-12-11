@@ -13,14 +13,16 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './snippets/error-page/error-page.component';
-
 import { SettingsModule } from './components/settings/settings.module';
+import { InboxComponent } from './components/inbox/inbox.component';
+import { InboxModule } from './components/inbox/inbox.module';
 @NgModule({
 	declarations: [
 		PagesComponent,
 		ActionComponent,
 		ProfileComponent,
 		ErrorPageComponent,
+		// InboxComponent,
 	],
 	imports: [
 		CommonModule,
@@ -33,7 +35,8 @@ import { SettingsModule } from './components/settings/settings.module';
 		MailModule,
 		ECommerceModule,
 		AngularEditorModule,
-		SettingsModule
+		SettingsModule,
+		InboxModule
 	],
 	providers: []
 })

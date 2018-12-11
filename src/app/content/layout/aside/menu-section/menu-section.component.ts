@@ -16,7 +16,9 @@ export class MenuSectionComponent implements OnInit {
 
 	@HostBinding('class') classes = 'm-menu__section';
 
-	constructor() {}
+	constructor() {
+		console.log(this.item)
+	}
 
 	ngOnInit(): void {}
 }

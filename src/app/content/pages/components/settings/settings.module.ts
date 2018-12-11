@@ -25,6 +25,8 @@ import { JobProfileComponent } from './job-profile/job-profile.component';
 import { ConfirmationDialogComponent } from './model/confirmation-dialog.component';
 import { AddTagComponent } from './add-tag/add-tag.component';
 import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component';
+// import { UserListComponent } from './user-list/user-list.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 @NgModule({
 	imports: [
 
@@ -47,6 +49,7 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 		MatButtonModule,
 		MatIconModule,
 		MatInputModule,
+		NgxJsonViewerModule,
 		MatSlideToggleModule,
 		ReactiveFormsModule,
 		MatChipsModule,
@@ -86,6 +89,10 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 					{
 						path: 'auto-matic-tag',
 						component:AutoMaticTagComponent
+					},
+					{
+						path: 'user-list',
+						// component:UserListComponent
 					}
 
 				]
@@ -112,7 +119,8 @@ import { AutoMaticTagComponent } from './auto-matic-tag/auto-matic-tag.component
 		JobProfileComponent,
 		AutoMaticTagComponent,
 		ConfirmationDialogComponent,
-		AddTagComponent
+		AddTagComponent,
+		// UserListComponent
 	]
 })
 export class SettingsModule { }

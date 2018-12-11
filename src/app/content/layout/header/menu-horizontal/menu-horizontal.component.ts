@@ -76,6 +76,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
 		for (const menuItem of menuItems) {
 			if (menuItem.aside) {
 				this.itemsWithAsides.push(menuItem);
+				
 			}
 
 			if (menuItem.submenu && menuItem.submenu.items) {

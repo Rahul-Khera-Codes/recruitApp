@@ -20,6 +20,10 @@ const routes: Routes = [
 				loadChildren: './components/settings/settings.module#SettingsModule'
 			},
 			{
+				path: 'inbox',
+				loadChildren: './components/inbox/inbox.module#InboxModule'
+			},
+			{
 				path: 'mail',
 				loadChildren: './components/apps/mail/mail.module#MailModule'
 			},
