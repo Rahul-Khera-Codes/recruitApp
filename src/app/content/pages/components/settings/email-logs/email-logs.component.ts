@@ -1,8 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { ApiService } from '../../../../../core/services/api.service';
 import { DialogService } from '../../../../../core/services/dialog.service';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
+import { MatPaginator } from '@angular/material';
+
 
 @Component({
     selector: 'm-email-logs',
@@ -10,36 +12,44 @@ import 'rxjs/add/operator/debounceTime';
     styleUrls: ['./email-logs.component.scss']
 })
 export class EmailLogsComponent implements OnInit {
-    page = 1;
-    totalPages = 1;
-    limit = 100;
     emailLogs: any;
     searchInput = new FormControl();
     searchTerm = '';
     loading = true;
+    totalPages = 0;
+    limit = 100;
+    displayedColumns: string[] = ['from', 'email', 'subject', 'time', 'user'];
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(
         public _apiService: ApiService,
         public _dialogService: DialogService,
         private changeDetectorRef: ChangeDetectorRef
-    ) { }
+    ) {
+
+    }
 
     ngOnInit() {
+        this.paginator.pageSize = this.limit;
         this.getEmailLogs();
         this.searchInput.valueChanges
             .debounceTime(500)
             .subscribe(newValue => this.search(newValue));
     }
 
+    paginatorChange(e) {
+        this.getEmailLogs();
+    }
+
     async getEmailLogs() {
         try {
             this.loading = true;
             const res = await this._apiService.getEmailLogs({
-                'page': this.page,
+                'page': this.paginator.pageIndex + 1,
                 'email': this.searchTerm,
-                'limit': this.limit
+                'limit': this.paginator.pageSize
             });
             this.emailLogs = res['data'];
-            this.totalPages = Math.ceil(res['count'] / this.limit);
+            this.totalPages = res['count'];
             this.loading = false;
             this.changeDetectorRef.detectChanges();
         } catch (e) {
@@ -48,24 +58,14 @@ export class EmailLogsComponent implements OnInit {
         }
     }
 
-    previous() {
-        --this.page;
-        this.getEmailLogs();
-    }
-
-    next() {
-        ++this.page;
-        this.getEmailLogs();
-    }
-
     previewEmail(emailData) {
-        // this._dialogService.previewEmail(emailData).then((res) => {
-        //     console.log(res);
-        // });
+        this._dialogService.previewEmail(emailData).then((res) => {
+            console.log(res);
+        });
     }
 
     search(searchText) {
-        this.page = 1;
+        this.paginator.pageIndex = 0;
         if (searchText && searchText.length > 0) {
             this.searchTerm = searchText;
             this.getEmailLogs();
@@ -73,10 +73,6 @@ export class EmailLogsComponent implements OnInit {
             this.searchTerm = null;
             this.getEmailLogs();
         }
-    }
-
-    emailLogsTrack(index, data) {
-        return data['_id'] || index;
     }
 
 }

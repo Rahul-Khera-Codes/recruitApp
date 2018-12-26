@@ -64,6 +64,6 @@ import { LocalStorageService } from './services/local-storage.service';
 		ConsoleLogPipe,
 		SafePipe
 	],
-	providers: [DialogService,LocalStorageService]
+	providers: [DialogService, LocalStorageService]
 })
-export class CoreModule {}
+export class CoreModule { }

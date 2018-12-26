@@ -43,9 +43,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { UserActivityLogComponent } from './user-activity-log/user-activity-log.component';
 import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.component';
 import { EmailLogsComponent } from './email-logs/email-logs.component';
+import { SetvaremailpreviewComponent } from './setVarEmailPreview/setVarEmailPreview.component';
 @NgModule({
 	imports: [
-
 		MatIconModule,
 		MatCardModule,
 		FormsModule,
@@ -137,7 +137,8 @@ import { EmailLogsComponent } from './email-logs/email-logs.component';
 	entryComponents: [
 		ManualTagComponent,
 		ConfirmationDialogComponent,
-		RemoveOldLogsComponent
+		RemoveOldLogsComponent,
+		SetvaremailpreviewComponent
 	],
 	declarations: [
 		ImapComponentFormComponent,
@@ -160,7 +161,8 @@ import { EmailLogsComponent } from './email-logs/email-logs.component';
 		CompanyProfileComponent,
 		UserActivityLogComponent,
 		RemoveOldLogsComponent,
-		EmailLogsComponent
+		EmailLogsComponent,
+		SetvaremailpreviewComponent
 	]
 })
 export class SettingsModule { }
