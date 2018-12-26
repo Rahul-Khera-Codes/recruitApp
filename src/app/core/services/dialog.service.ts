@@ -11,7 +11,9 @@ import { SetvaremailpreviewComponent } from '../../content/pages/components/sett
 import { Subscription } from 'rxjs/Rx';
 import { ConfirmationDialogComponent } from '../../content/pages/components/settings/model/confirmation-dialog.component';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class DialogService {
     dialogRef: MatDialogRef<any>;
     expire: Subscription

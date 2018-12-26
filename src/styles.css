@@ -1,0 +1,240 @@
+/* You can add global styles to this file, and also import other style files */
+.mat-table__wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mat-table__wrapper mat-cell,
+.mat-table__wrapper mat-header-cell {
+  min-height: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #9388fa !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border: none !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border: none !important;
+}
+
+.mat-table__wrapper .mat-table {
+  min-width: 1000px;
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  border: 1px solid #b7b0ff;
+  border-radius: 50px;
+  width: 95%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.3em 0 1em 0 !important;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+  min-width: 600px !important;
+}
+
+.mat-table__wrapper .mat-table .email-cell {
+  word-wrap: normal;
+  width: 180px;
+  flex: auto;
+}
+
+.m-mat-dialog-container__wrapper .mat-dialog-container {
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.m-mat-dialog-container__wrapper .mat-dialog-container .m-portlet {
+  margin-bottom: 0;
+}
+
+.m-mat-dialog-container__wrapper .mat-dialog-container .alert {
+  border-radius: 0 !important;
+  width: 1032px;
+}
+
+.mat-table__wrapper--sub .mat-table {
+  min-width: 400px;
+}
+
+.mat-table__wrapper--sub .mat-table .mat-cell:last-child {
+  flex: 0 0 100px;
+}
+
+.mat-table__wrapper--sub .mat-table .mat-header-cell:last-child {
+  flex: 0 0 100px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-radio-button {
+  padding-right: 16px;
+}
+
+.m-form--alert {
+  margin-top: 30px;
+}
+
+.mat-column-checkbox {
+  flex: 0 0 68px;
+}
+
+.mat-column-id {
+  flex: 0 0 68px;
+}
+
+.mat-column-main {
+  flex: 0 0 568px;
+}
+
+.mat-column-actions {
+  flex: 0 0 160px;
+}
+
+.mat-table__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mat-column-vinCode {
+  flex: 0 0 170px;
+}
+
+.m-portlet-mx-0 {
+  margin: -1.1rem -2.2rem 0;
+  overflow-x: hidden;
+}
+
+.mat-table__wrapper .mat-table .mat-row-editing.mat-row-inactive {
+  height: 0;
+  min-height: 0;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.cardsub {
+  color: inherit;
+  font-size: 18px;
+}
+
+table.list {
+  width: 100%;
+}
+
+table.list tr,
+table.list th {
+  padding: 5px 10px 5px 0px;
+  vertical-align: middle;
+}
+
+.table td {
+  padding: .75rem .75rem .75rem 0px;
+}
+
+.off {
+  color: red;
+  cursor: pointer;
+}
+
+.on {
+  color: green;
+  cursor: pointer;
+}
+
+.badges {
+  background-color: #554ebd;
+  border-radius: 50px;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+}
+
+.mainform {
+  margin-bottom: 10px;
+}
+
+.note {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+  font-size: 10px;
+}
+
+.fetch-till {
+  font-size: 10px;
+}
+
+td,
+th {
+  vertical-align: middle !important;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.font500 {
+  font-weight: 500;
+}
+
+.chartcolor {
+  color: #ff5d7e;
+}
+
+.tableStrip {
+  background: #efefef;
+}
+
+.pl-2 {
+  padding-left: 2px;
+}
+
+.font-color {
+  color: #9388fa;
+}
+
+.mat-radio-outer-circle {
+  border-color: #f2f3f8 !important;
+  opacity: 0.6;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #fdfdff !important;
+}
+
+m-add-tag .mat-form-field .mat-form-field-label {
+  color: #f4516c;
+  font-size: 14px;
+}
+
+m-add-tag .mat-form-field-appearance-legacy .mat-form-field-underline {
+  display: none;
+}
+
+m-add-tag .mat-keywords .mat-form-field-infix {
+  padding: 0;
+  border: 0;
+}
+
+.material-icons {
+  cursor: pointer;
+}

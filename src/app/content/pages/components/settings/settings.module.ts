@@ -45,6 +45,9 @@ import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.compon
 import { EmailLogsComponent } from './email-logs/email-logs.component';
 import { SetvaremailpreviewComponent } from './setVarEmailPreview/setVarEmailPreview.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SpamComponent } from './spam/spam.component';
+import { AddNewSpamContactComponent } from './models/add-spam-contact/add-spam-contact.component';
+import { SpamDialogService } from '../../../../core/services/spamDialog.service';
 @NgModule({
 	imports: [
 		MatIconModule,
@@ -132,18 +135,25 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 					{
 						path: 'reset-password',
 						component: ResetPasswordComponent
+					},
+					{
+						path: 'spam',
+						component: SpamComponent
 					}
 
 				]
 			}
 		])
 	],
-	providers: [],
+	providers: [
+		SpamDialogService
+	],
 	entryComponents: [
 		ManualTagComponent,
 		ConfirmationDialogComponent,
 		RemoveOldLogsComponent,
-		SetvaremailpreviewComponent
+		SetvaremailpreviewComponent,
+		AddNewSpamContactComponent
 	],
 	declarations: [
 		ImapComponentFormComponent,
@@ -168,7 +178,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 		RemoveOldLogsComponent,
 		EmailLogsComponent,
 		SetvaremailpreviewComponent,
-		ResetPasswordComponent
+		ResetPasswordComponent,
+		SpamComponent,
+		AddNewSpamContactComponent
 	]
 })
 export class SettingsModule { }

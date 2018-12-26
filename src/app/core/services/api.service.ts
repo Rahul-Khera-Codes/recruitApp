@@ -177,58 +177,27 @@ export class ApiService {
     async getUserList(body) {
         return await this.http.get(this.updateUrl(`${this.API_URL}/user/list/${body.page}/${body.limit}`)).toPromise();
     }
-    // getSpamList(body): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.get(environment['apibase'] + `spamList/get/${body.page}/${body.limit}`)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // updateSpam(data: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + 'spamList/update/' + data.id, data)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // moveSpamFromJobProfile() {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + 'remove/spamFromJobProfile', {})
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
-    // addSpam(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.post(environment['apibase'] + 'spamData/add', body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+
+    async getSpamList(body): Promise<any> {
+        return this.http.get(this.updateUrl(environment['apibase'] + `spamList/get/${body.page}/${body.limit}`)).toPromise();
+    }
+
+    async deleteSpamList(id): Promise<any> {
+        return this.http.delete(this.updateUrl(environment['apibase'] + `spamList/delete/${id}`)).toPromise();
+    }
+
+    async updateSpam(data: any): Promise<any> {
+        return await this.http.put(this.updateUrl(environment['apibase'] + 'spamList/update/' + data.id), data).toPromise();
+    }
+
+    async moveSpamFromJobProfile(): Promise<any> {
+        return await this.http.put(this.updateUrl(environment['apibase'] + 'remove/spamFromJobProfile'), {}).toPromise();
+    }
+
+    async addSpam(body: any): Promise<any> {
+        return await this.http.post(this.updateUrl(environment['apibase'] + 'spamData/add'), body).toPromise();
+    }
+
     // fetchEmailByDays(body): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.get(environment['apibase'] + `fetch/emails/${body.days}`)

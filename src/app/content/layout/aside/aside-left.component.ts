@@ -122,7 +122,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Spam',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/spam'
 				},
 				{
 					title: 'Interview Test System',

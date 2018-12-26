@@ -19,6 +19,6 @@ export class MessengerComponent implements OnInit {
 	constructor(public messengerService: MessengerService) {}
 
 	ngOnInit(): void {
-		this.messages = this.messengerService.getData();
+		// this.messages = this.messengerService.getData();
 	}
 }
