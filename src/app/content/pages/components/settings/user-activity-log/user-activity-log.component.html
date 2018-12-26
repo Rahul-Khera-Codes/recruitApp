@@ -1,0 +1,91 @@
+<div class="activity">
+  <!-- <span *ngIf="selectUserLog && selectUserLog.email"><b>User Email:</b> {{selectUserLog.email}}</span> -->
+  <p class="error" *ngIf="selectUserLog && !selectUserLog.action">{{errorMessage}}</p>
+  <!-- <button mat-raised-button color="primary" class="remove" (click)="removeLogs()">Remove Logs</button> -->
+
+</div>
+<div class="row">
+  <div class="col-xl-12 col-lg-12">
+    <!--Begin::Portlet-->
+    <div class="m-portlet  m-portlet--full-height ">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <h3 class="m-portlet__head-text">
+              <span *ngIf="selectUserLog && selectUserLog.email"><b>Email:</b> {{selectUserLog.email}}</span>
+            </h3>
+          </div>
+        </div>
+        <div class="dataTables_wrapper">
+          <div class="dataTables_paginate paging_full_numbers" id="m_table_1_paginate">
+            <ul class="pagination" *ngIf="selectUserLog && selectUserLog.action">
+              <li class="paginate_button page-item previous">
+                <button class="page-link" (click)="previous()" [disabled]="pageNo == 0">
+                  <i class="la la-angle-left"></i>
+                </button>
+              </li>
+              {{pageNo + 1}}/{{totalPages}}
+              <li class="paginate_button page-item next">
+                <button class="page-link" (click)="next()" [disabled]="(pageNo + 1) == totalPages || !selectUserLog.action.length">
+                  <i class="la la-angle-right"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="m-portlet__head-tools">
+          <button mat-raised-button color="primary" class="remove" (click)="removeLogs()">Remove Logs</button>
+          <ul class="m-portlet__nav">
+            <li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+              m-dropdown-toggle="hover" aria-expanded="true">
+              <a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl m-dropdown__toggle">
+                <i class="la la-ellipsis-h m--font-brand"></i>
+              </a>
+              <div class="m-dropdown__wrapper">
+                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                <div class="m-dropdown__inner">
+                  <div class="m-dropdown__body">
+                    <div class="m-dropdown__content">
+                      <ul class="m-nav">
+                        <li class="m-nav__section m-nav__section--first">
+                          <span class="m-nav__section-text">Select User</span>
+                        </li>
+                        <li class="m-nav__item" *ngFor="let email of usersLog; trackBy: usersLogTrack;" (click)="selectedUser(email)">
+                          <a class="m-nav__link">
+                            <i class="m-nav__link-icon flaticon-user"></i>
+                            <span class="m-nav__link-text">{{email.email}}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
+      <div class="m-portlet__body" *ngIf="selectUserLog && selectUserLog.action">
+        <p *ngIf="!selectUserLog.action.length">No Records</p>
+        <div class="m-scrollable m-scroller ps--active-y" *ngIf="selectUserLog.action.length">
+          <div class="m-timeline-2">
+            <div class="m-timeline-2__items  m--padding-top-25 m--padding-bottom-30">
+              <div class="m-timeline-2__item" *ngFor="let action of selectUserLog.action; let i = index; trackBy: selectUserLogActionTrack;">
+                <span class="m-timeline-2__item-time">{{selectUserLog.time[i] | date:'short'}}</span>
+                <div class="m-timeline-2__item-cricle">
+                  <i class="fa fa-genderless" [ngClass]="{ 'm--font-success': (i%4 == 0), 'm--font-info': (i%4 == 1),'m--font-danger': (i%4 == 2),'m--font-warning': (i%4 == 3) }"></i>
+                </div>
+                <div class="m-timeline-2__item-text  m--padding-top-5">
+                  <p>{{action}}</p>
+                  <small>{{selectUserLog.json[i]}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End::Portlet-->
+  </div>
+</div>

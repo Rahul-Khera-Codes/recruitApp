@@ -1,0 +1,40 @@
+<div class="row">
+  <mat-spinner class="mx-auto" *ngIf="loading" diameter="40"></mat-spinner>
+  <div class="col-lg-12">
+    <!--begin::Portlet-->
+    <div class="m-portlet">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <span class="m-portlet__head-icon m--hide">
+              <i class="la la-gear"></i>
+            </span>
+            <h3 class="m-portlet__head-text">
+              Company Profile
+            </h3>
+          </div>
+        </div>
+      </div>
+      <!--begin::Form-->
+      <form class="m-form" *ngIf="companyProfileForm" [formGroup]="companyProfileForm" id="companyForm" (ngSubmit)="companyProfile(companyProfileForm.value)">
+        <div class="m-portlet__body">
+          <div class="m-form__section m-form__section--first">
+            <div class="form-group m-form__group">
+              <label for="exampleTextarea">Company Profile:</label>
+              <textarea class="form-control m-input" formControlName="company_profile" placeholder="Company Profile"
+                required rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+          <div class="m-form__actions m-form__actions">
+            <button *ngIf="companyProfileForm" class="btn btn-success" form="companyForm" [disabled]="companyProfileForm.invalid || (previousContent && companyProfileForm.value.company_profile == previousContent.company_profile)">{{previousContent
+              ? 'Update' : 'Submit'}}</button>
+          </div>
+        </div>
+      </form>
+      <!--end::Form-->
+    </div>
+    <!--end::Portlet-->
+  </div>
+</div>

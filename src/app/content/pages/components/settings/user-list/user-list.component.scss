@@ -1,0 +1,12 @@
+.user-list-table {
+    width: 100%;
+    .mat-icon {
+        color: red;
+        cursor: pointer;
+    }
+}
+.add-user-btn {
+    margin: .5em;
+    display: flex;
+    justify-content: flex-end;
+}
