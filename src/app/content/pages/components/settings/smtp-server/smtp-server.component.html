@@ -1,0 +1,44 @@
+<div class="main">
+  <app-smtp-component-form (addedSMTP)="getSmtpList()"></app-smtp-component-form>
+    <div>
+        <mat-card>
+            <mat-card-subtitle class="cardsub font500">
+                SMTP Settings
+            </mat-card-subtitle>
+            <mat-card-content class="table-responsive">
+                <table id="table" class="list table">
+                    <thead>
+                        <tr  class="tableStrip">
+                            <th class="pl-2">Email ID</th>
+                            <th class="alignCenter">Server</th>
+                            <th class="alignCenter">Port</th>
+                            <th class="alignCenter">Encryption</th>
+                            <th >Status</th>
+                            <th class="alignCenter">Test</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr *ngFor="let setting of settingJson; trackBy: settingJsonTrack;">
+                            <td>{{setting.email}}</td>
+                            <td class="alignCenter">{{setting.smtp_server}}</td>
+                            <td class="alignCenter">{{setting.server_port}}</td>
+                            <td class="alignCenter">{{setting.type}}</td>
+                            <td>
+                                <mat-icon id="status" class="{{setting.status ? 'on':'off'}} alignCenter" (click)="changeStatus(setting.email, setting.status)"><i class="material-icons">{{setting.status ? 'done' : 'clear'}}</i></mat-icon>
+                            </td>
+                            <td class="alignCenter">
+                                <button id="test" mat-button class="buttonTable alignCenter" (click)="test(setting.email)">TEST</button>
+                            </td>
+                            <td>
+                                    <mat-icon class="material-icons alignCenter on alignCenter" (click)="remove(setting.id)">remove_circle_outline</mat-icon>
+                                <!-- <button id="remove" mat-button class="chartcolor" [disabled]="setting.status" (click)="remove(setting.id)">REMOVE</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+

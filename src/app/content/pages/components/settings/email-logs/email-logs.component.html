@@ -1,0 +1,55 @@
+<div class="m-content">
+  <div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+      <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+          <h3 class="m-portlet__head-text">
+            Email Logs
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="m-portlet__body">
+
+      <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+        <div class="row align-items-center">
+          <div class="col-xl-8 order-2 order-xl-1">
+            <div class="form-group m-form__group row align-items-center">
+              <div class="col-md-4">
+                <div class="m-input-icon m-input-icon--left">
+                  <input type="text" class="form-control m-input" [formControl]="searchInput" placeholder="Search..." placeholder="Search..." id="generalSearch">
+                  <span class="m-input-icon__icon m-input-icon__icon--left">
+                    <span><i class="la la-search"></i></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded" id="email-logs">
+        <div class="example-container mat-elevation-z8">
+          <div class="example-loading-shade" *ngIf="loading">
+            <mat-spinner *ngIf="loading"></mat-spinner>
+          </div>
+
+          <div class="example-table-container">
+
+            <table mat-table [dataSource]="emailLogs" class="example-table">
+              <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+                <th mat-header-cell *matHeaderCellDef>{{column | titlecase}}</th>
+                <td mat-cell *matCellDef="let row" (click)="previewEmail(row)">{{row[column]}}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+
+          <mat-paginator [length]="totalPages" [pageSize]="limit" [pageSizeOptions]="[50, 100, 200]" (page)="paginatorChange($event)"></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

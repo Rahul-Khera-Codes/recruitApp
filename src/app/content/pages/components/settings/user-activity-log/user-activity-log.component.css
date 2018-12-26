@@ -1,0 +1,31 @@
+.m-timeline-2 small {
+  width: 980%;
+  word-break: break-all;
+}
+
+.m-timeline-2 .m-timeline-2__item-cricle {
+  left: 10.89rem;
+}
+
+.m-timeline-2 .m-timeline-2__item-text {
+  padding-left: 11em;
+}
+
+.m-timeline-2:before {
+  left: 11.60rem;
+}
+
+.remove {
+  margin-left: 0 !important;
+  margin-right: 5px;
+}
+
+.dataTables_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.dataTables_wrapper .pagination {
+  margin: 0;
+  align-items: center;
+}

@@ -1,0 +1,50 @@
+.full {
+	width: 100%;
+}
+.label {
+	padding: .25em .5em;
+    font-size: 75%;
+    line-height: 1;
+    vertical-align: baseline;
+    font-weight: 700;
+    background-color: #5bc0de;
+    color: #fff;
+    border-radius: .2rem;
+    text-align: center;
+    display: inline-block;
+}
+.m-f {
+	margin: 15px 0px;
+}
+.fx-pos {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.m-p {
+	max-height: 240px !important;
+    overflow: auto;
+}
+.a-c {
+    text-align: center;
+    opacity: 0.7;
+}
+.con-of {
+    // max-height: 352px !important;
+    overflow: auto;
+}
+.fx-pos1 {
+    position: absolute;
+    top: 92%;
+    left: 76%;
+}
+.m-z {
+    margin: 0px;
+}
+.main-container {
+    height: 100%;
+    position: relative;
+    .mat-icon {
+        padding: 0px;
+    }
+}
