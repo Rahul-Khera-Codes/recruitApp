@@ -44,6 +44,7 @@ import { UserActivityLogComponent } from './user-activity-log/user-activity-log.
 import { RemoveOldLogsComponent } from './remove-old-logs/remove-old-logs.component';
 import { EmailLogsComponent } from './email-logs/email-logs.component';
 import { SetvaremailpreviewComponent } from './setVarEmailPreview/setVarEmailPreview.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 @NgModule({
 	imports: [
 		MatIconModule,
@@ -127,6 +128,10 @@ import { SetvaremailpreviewComponent } from './setVarEmailPreview/setVarEmailPre
 					{
 						path: 'email-logs',
 						component: EmailLogsComponent
+					},
+					{
+						path: 'reset-password',
+						component: ResetPasswordComponent
 					}
 
 				]
@@ -162,7 +167,8 @@ import { SetvaremailpreviewComponent } from './setVarEmailPreview/setVarEmailPre
 		UserActivityLogComponent,
 		RemoveOldLogsComponent,
 		EmailLogsComponent,
-		SetvaremailpreviewComponent
+		SetvaremailpreviewComponent,
+		ResetPasswordComponent
 	]
 })
 export class SettingsModule { }

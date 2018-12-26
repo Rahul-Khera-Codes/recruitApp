@@ -305,11 +305,11 @@ export class ApiService {
     }
 
     async sendEmail(body: any): Promise<any> {
-        return await this.http.post(environment['apibase'] + 'email/sendtomany', body);
+        return await this.http.post(this.updateUrl(environment['apibase'] + 'email/sendtomany'), body);
     }
 
     async sendToNotReplied(body: any): Promise<any> {
-        return await this.http.post(environment['apibase'] + 'sendToNotReplied', body).toPromise();
+        return await this.http.post(this.updateUrl(environment['apibase'] + 'sendToNotReplied'), body).toPromise();
     }
     // UnreadStatus(body: any): Observable<any> {
     //     this.increaseAPiCount();
@@ -337,19 +337,11 @@ export class ApiService {
     //             return Observable.throw(error || 'Server error');
     //         });
     // }
-    // resetPassword(body: any): Observable<any> {
-    //     this.increaseAPiCount();
-    //     return this.http.put(environment['apibase'] + `account/update_password`, body)
-    //         .map((res: Response) => {
-    //             this.decreaseAPiCount();
-    //             return res;
-    //         })
-    //         .catch((error: any) => {
-    //             this.count = 0;
-    //             this.apiEndEvent.emit();
-    //             return Observable.throw(error || 'Server error');
-    //         });
-    // }
+
+    async resetPassword(body: any): Promise<any> {
+        return await this.http.put(this.updateUrl(environment['apibase'] + `account/update_password`), body).toPromise();
+    }
+
     // emailAttachment(id: string): Observable<any> {
     //     this.increaseAPiCount();
     //     return this.http.put(environment['apibase'] + `email/mailAttachment/${id}`)
@@ -547,15 +539,16 @@ export class ApiService {
             });
     }
     async sendTestEmail(userDetail: any, body: any): Promise<any> {
-        return await this.http.post(environment['apibase'] + `template/email/${userDetail.CandidateEmail}`, body).toPromise();
+        return await this.http.post(this.updateUrl(environment['apibase'] + `template/email/${userDetail.CandidateEmail}`), body)
+            .toPromise();
     }
 
     async sendEmailBySeclection(body: any): Promise<any> {
-        return await this.http.post(environment['apibase'] + `email/by_seclection`, body);
+        return await this.http.post(this.updateUrl(environment['apibase'] + `email/by_seclection`), body);
     }
 
     async resendEmailForTracking(body: any): Promise<any> {
-        return await this.http.put(environment['apibase'] + 'send/sendEmailToNotviewed', body).toPromise();
+        return await this.http.put(this.updateUrl(environment['apibase'] + 'send/sendEmailToNotviewed'), body).toPromise();
     }
     async activateImap(email_id: string) {
         return await this.http.put(this.updateUrl(`${this.API_URL}/imap/statusActive/${email_id}`), {}).toPromise();
@@ -570,7 +563,6 @@ export class ApiService {
             .catch((error: any) => {
                 this.count = 0;
                 this.apiEndEvent.emit();
-                console.log("error", error)
                 return Observable.throw(error || 'Server error');
             });
     }

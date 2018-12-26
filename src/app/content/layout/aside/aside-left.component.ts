@@ -117,7 +117,8 @@ export class AsideLeftComponent implements OnInit, AfterViewInit {
 				},
 				{
 					title: 'Reset Password',
-					bullet: 'dot'
+					bullet: 'dot',
+					page: '/settings/reset-password'
 				},
 				{
 					title: 'Spam',
