@@ -1,15 +1,15 @@
-<div class="mainform">
+<mat-card>
     <form id="addUserForm" autoComplete="off" [formGroup]="addNewSpamContactForm">
         <mat-card-title class="cardsub">
             Add New Spam Contact
         </mat-card-title>
         <mat-card-subtitle class="error" *ngIf="showmessage">{{message}}</mat-card-subtitle>
         <mat-card-content>
-            <table class="width-100">
+            <table class="w-100">
                 <tr>
                     <td>
-                        <mat-form-field class="width-100">
-                          <input matInput id="add-spam-emal" placeholder="Email" type="text" [formControl]="addNewSpamContactForm.controls['email']">
+                        <mat-form-field class="w-100">
+                            <input matInput id="add-spam-emal" placeholder="Email" type="text" [formControl]="addNewSpamContactForm.controls['email']">
                         </mat-form-field>
                         <mat-error *ngIf="!addNewSpamContactForm.controls['email'].valid && addNewSpamContactForm.controls['email'].touched">
                             Please enter a valid email
@@ -18,11 +18,12 @@
                 </tr>
                 <tr>
                     <td>
+                        <button id="add-user-button" class="mr-4" type="submit" mat-raised-button color=primary [disabled]="addNewSpamContactForm.invalid || loading"
+                            (click)="addSpam()"> {{(activity === 'edit') ? 'Update' : 'Add'}} Contact </button>
                         <button id="close-add-user-button" mat-raised-button (click)="close()"> Close </button>
-                        <button id="add-user-button" type="submit" mat-raised-button color=primary [disabled]="addNewSpamContactForm.invalid || loading" (click)="addSpam()"> Add Contact </button>
                     </td>
                 </tr>
             </table>
         </mat-card-content>
     </form>
-</div>
+</mat-card>

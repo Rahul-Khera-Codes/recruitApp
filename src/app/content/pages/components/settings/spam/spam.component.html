@@ -6,11 +6,11 @@
         <div class="col-sm-6 text-right">
             <button small mat-raised-button matTooltip="Send Email" mdTooltipPosition="below" class="cyan right send-email"
                 (click)="gotoSpam()">Move to Spam</button>
-            <button small mat-raised-button matTooltip="Add Email" mdTooltipPosition="below" class="cyan right send-email"
+            <button small mat-raised-button matTooltip="Add Email" mdTooltipPosition="below" class="ml-4 cyan right send-email"
                 (click)="addSpam()">Add</button>
         </div>
     </div>
-    <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded pt-2" id="email-logs">
+    <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded pt-2 mt-2" id="email-logs">
         <div class="table-box mat-elevation-z8">
             <div class="loading-shade" *ngIf="loading">
                 <mat-spinner *ngIf="loading"></mat-spinner>

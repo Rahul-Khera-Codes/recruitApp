@@ -35,7 +35,9 @@ export class SpamDialogService {
     // }
 
     async openAddSpam(activity, formData?) {
-        this.dialogRef = this.dialog.open(AddNewSpamContactComponent);
+        this.dialogRef = this.dialog.open(AddNewSpamContactComponent, {
+            width: '23vw'
+        });
         this.dialogRef.componentInstance.activity = activity;
         this.dialogRef.componentInstance.formData = formData;
         return await this.dialogRef.afterClosed().toPromise();
@@ -69,7 +71,9 @@ export class SpamDialogService {
     // }
 
     async openConfirmationBox(message) {
-        this.dialogRef = this.dialog.open(ConfirmationDialogComponent);
+        this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            width: '23vw'
+        });
         this.dialogRef.componentInstance.message = message;
         return await this.dialogRef.afterClosed().toPromise();
     }
